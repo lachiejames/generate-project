@@ -22,13 +22,13 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Install Yarn
+      - name: Install dependencies
         run: yarn install:ci
 
       - name: Build
         run: yarn build
 
-      - name: Test
+      - name: Unit tests
         run: yarn test
 
       - name: Upload coverage reports to Codecov
