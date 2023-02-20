@@ -28,8 +28,8 @@ jobs:
       - name: Test
         run: yarn test
 
-      - name: Publish Test Coverage
-        run: bash <(curl -s https://codecov.io/bash) -t $(CODECOV_TOKEN)
+      - name: Upload coverage reports to Codecov
+        uses: codecov/codecov-action@v3
 
       - name: Semantic Release
         run: yarn semantic-release
