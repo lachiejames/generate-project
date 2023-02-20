@@ -1,10 +1,10 @@
 import { readdirSync } from "fs-extra";
-import { TEST_DIRECTORY, cleanTestDirectory, setMockPrompts } from "../testUtils/helpers";
+import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
 import { runScaffold } from "./scaffold";
 
 describe("scaffold", () => {
   beforeEach(() => {
-    setMockPrompts();
+    setPromptMock();
   });
 
   afterEach(() => {

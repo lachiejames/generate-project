@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { Environment, Template } from "nunjucks";
 import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, writeTemplateToFile } from "./fileHandler";
-import ScaffoldPrompts from "./models/scaffoldPrompts";
+import Prompts from "./models/prompts";
 import { showPrompts } from "./prompts";
 
 const runStep = (script: string, terminalText: string): void => {
@@ -18,7 +18,7 @@ export const runPostScaffoldSteps = (): void => {
 };
 
 export const runScaffold = async (projectDirectory: string): Promise<void> => {
-  const answers: ScaffoldPrompts = await showPrompts();
+  const answers: Prompts = await showPrompts();
 
   const templateEnvironment: Environment = loadNunjucksEnvironment();
   const templateFilePaths: string[] = getTemplateFilePaths(answers.selectedTemplate);

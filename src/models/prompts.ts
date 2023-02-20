@@ -1,4 +1,4 @@
-export default interface ScaffoldPrompts {
+export default interface Prompts {
   selectedTemplate: string;
   packageName: string;
   packageDescription: string;
