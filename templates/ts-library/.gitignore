@@ -1,0 +1,16 @@
+**/node_modules/**
+**/dist/**
+**/coverage/**
+.terraform/
+junit.xml
+yarn-error.log
+generated/
+newrelic_agent.log
+.vscode/
+.webpack/
+.serverless/
+junit/
+.terraform.*
+terraform.*
+.DS_Store
+*.plan
