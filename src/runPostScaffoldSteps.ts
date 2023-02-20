@@ -2,7 +2,7 @@ import { execSync } from "child_process";
 
 const runStep = (script: string, terminalText: string): void => {
   console.log(`\n🔨 ${terminalText} 🔨`);
-  execSync(script);
+  execSync(script, { stdio: "inherit" });
 };
 
 export const runPostScaffoldSteps = (): void => {
