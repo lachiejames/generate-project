@@ -14,7 +14,7 @@ describe("scaffold", () => {
   describe("runScaffold()", () => {
     it("creates files for the provided template", async () => {
       expect(() => readdirSync(TEST_DIRECTORY)).toThrowError(
-        "ENOENT: no such file or directory, scandir 'temp-scaffold'",
+        `ENOENT: no such file or directory, scandir '${TEST_DIRECTORY}'`,
       );
 
       await runScaffold(TEST_DIRECTORY);

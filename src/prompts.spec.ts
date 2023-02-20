@@ -1,5 +1,5 @@
 import { cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
-import { MOCK_ANSWERS } from "../testUtils/mock-answers";
+import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 import { getTemplateNames, showPrompts } from "./prompts";
 
 describe("prompts", () => {
