@@ -11,7 +11,8 @@
     "lint:ci": "eslint .",
     "build": "tsc",
     "start": "ts-node .",
-    "test": "jest --coverage --detectOpenHandles",
+    "test": "jest --coverage --detectOpenHandles ./src",
+    "teste2e": "jest --detectOpenHandles ./e2e",
     "format": "eslint . --fix; prettier . --write;"
   },
   "dependencies": {
