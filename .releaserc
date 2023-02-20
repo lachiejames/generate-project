@@ -8,6 +8,5 @@
     "@semantic-release/changelog",
     "@semantic-release/npm",
     "@semantic-release/git"
-  ],
-  "repositoryUrl": "https://github.com/lachiejames/generate-project"
+  ]
 }
