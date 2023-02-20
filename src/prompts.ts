@@ -10,7 +10,7 @@ export const findTemplates = (): string[] => {
 
 export const showPrompts = async (): Promise<ScaffoldPrompts> => {
   console.clear();
-  console.log("🐛 Welcome to the EnergyAustralia Scaffolding tool 🐛");
+  console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
   return prompt<ScaffoldPrompts>([
     {
