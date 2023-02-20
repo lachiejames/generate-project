@@ -8,6 +8,7 @@
   "types": "./dist/index.d.ts",
   "scripts": {
     "install:ci": "yarn install --frozen-lockfile",
+    "lint:ci": "eslint .",
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles",
