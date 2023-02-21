@@ -9,8 +9,8 @@
 
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
+import { DEFAULT_ANSWERS } from "../src/defaultAnswers";
 import { TEST_DIRECTORY } from "../testUtils/helpers";
-import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 
 describe("ts-library", () => {
   it("produces the expected files", () => {
@@ -25,8 +25,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = readFileSync(`${TEST_DIRECTORY}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${MOCK_ANSWERS.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${MOCK_ANSWERS.packageDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${MOCK_ANSWERS.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${DEFAULT_ANSWERS.packageName}"`);
+    expect(packageJsonContents).toContain(`"description": "${DEFAULT_ANSWERS.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${DEFAULT_ANSWERS.author}"`);
   });
 });

@@ -12,7 +12,6 @@
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
-    "e2etest": "jest --detectOpenHandles ./e2e",
     "format": "eslint . --fix; prettier . --write;"
   },
   "dependencies": {},
