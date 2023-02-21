@@ -9,6 +9,7 @@
   "scripts": {
     "install:ci": "yarn install --frozen-lockfile",
     "lint:ci": "eslint .",
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
