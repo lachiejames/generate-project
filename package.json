@@ -55,5 +55,8 @@
     "typescript",
     "lambda",
     "docker"
-  ]
+  ],
+  "publishConfig": {
+    "access": "public"
+  }
 }
