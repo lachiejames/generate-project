@@ -1,3 +1,10 @@
+## [1.0.5](https://github.com/lachiejames/generate-project/compare/v1.0.4...v1.0.5) (2023-02-21)
+
+
+### Bug Fixes
+
+* ensure packages are updated to latest version ([#6](https://github.com/lachiejames/generate-project/issues/6)) ([922f8ac](https://github.com/lachiejames/generate-project/commit/922f8aca6b7220f2ccbb25b06b72d361274b424c))
+
 ## [1.0.4](https://github.com/lachiejames/generate-project/compare/v1.0.3...v1.0.4) (2023-02-21)
 
 
