@@ -1,6 +1,7 @@
-import path from "path";
 import { outputFileSync } from "fs-extra";
 import { Template } from "nunjucks";
+import path from "path";
+
 import Config from "./models/prompts";
 
 export const ROOT_DIRECTORY = path.normalize(path.join(__dirname, ".."));

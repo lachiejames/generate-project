@@ -7,11 +7,12 @@
  * but that doesn't seem to work with the interactive CLI.  It just skips over the prompts.  So I'm using bash instead.
  */
 
+import { execSync } from "child_process";
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
+
 import { DEFAULT_ANSWERS } from "../src/constants/defaultAnswers";
 import { TEST_DIRECTORY } from "../testUtils/helpers";
-import { execSync } from "child_process";
 
 describe("ts-library", () => {
   afterAll(() => {

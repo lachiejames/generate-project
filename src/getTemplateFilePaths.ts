@@ -1,4 +1,5 @@
 import { sync } from "glob";
+
 import { ROOT_DIRECTORY } from "./fileHandler";
 
 export const getTemplateFilePaths = (selectedTemplate: string): string[] => {

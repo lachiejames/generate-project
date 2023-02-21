@@ -1,4 +1,5 @@
 import { Environment, FileSystemLoader } from "nunjucks";
+
 import { ROOT_DIRECTORY } from "./fileHandler";
 
 export const loadNunjucksEnvironment = (): Environment => {

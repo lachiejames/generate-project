@@ -1,9 +1,8 @@
 import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
-import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
+import { cleanTestDirectory, setPromptMock, TEST_DIRECTORY } from "../testUtils/helpers";
 import { DEFAULT_ANSWERS } from "./constants/defaultAnswers";
-
 import { getOutputFilePath, writeTemplateToFile } from "./fileHandler";
 import { getTemplateFilePaths } from "./getTemplateFilePaths";
 import { loadNunjucksEnvironment } from "./loadNunjucksEnvironment";
