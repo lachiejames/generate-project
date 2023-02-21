@@ -1,11 +1,11 @@
 import { rmSync } from "fs-extra";
 import inquirer from "inquirer";
 
-import { MOCK_ANSWERS } from "./mock-answers";
+import { MOCK_ANSWERS } from "./mockAnswers";
 
-export const TEST_DIRECTORY = "temp-scaffold";
+export const TEST_DIRECTORY = "tempTestDir";
 
-export const setMockPrompts = (): void => {
+export const setPromptMock = (): void => {
   inquirer.prompt = jest.fn((_) => Promise.resolve(MOCK_ANSWERS)) as unknown as never;
 };
 

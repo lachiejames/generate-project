@@ -4,7 +4,7 @@ import { outputFileSync } from "fs-extra";
 import { sync } from "glob";
 import { Environment, FileSystemLoader, Template } from "nunjucks";
 
-import ScaffoldPrompts from "./models/scaffoldPrompts";
+import Prompts from "./models/prompts";
 
 export const ROOT_DIRECTORY = `${__dirname}/..`;
 
@@ -36,7 +36,7 @@ export const getOutputFilePath = (
   return `${projectDirectory}/${relativeTemplateFilePath}`;
 };
 
-export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: ScaffoldPrompts): void => {
+export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Prompts): void => {
   const outputString: string = template.render(answers);
 
   outputFileSync(outputFilePath, outputString);

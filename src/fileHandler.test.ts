@@ -1,14 +1,14 @@
 import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
-import { TEST_DIRECTORY, cleanTestDirectory, setMockPrompts } from "../testUtils/helpers";
-import { MOCK_ANSWERS } from "../testUtils/mock-answers";
+import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
+import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 
 import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, writeTemplateToFile } from "./fileHandler";
 
 describe("fileHandler", () => {
   beforeEach(() => {
-    setMockPrompts();
+    setPromptMock();
   });
 
   afterEach(() => {
@@ -54,7 +54,7 @@ describe("fileHandler", () => {
         "templates/ts-library/package.json",
         TEST_DIRECTORY,
       );
-      expect(outputFilePath).toEqual("temp-scaffold/package.json");
+      expect(outputFilePath).toEqual(`${TEST_DIRECTORY}/package.json`);
     });
 
     it("will succeed even if path does not exist", () => {
@@ -63,7 +63,7 @@ describe("fileHandler", () => {
         "templates/fake-template-folder/fake-file.txt",
         TEST_DIRECTORY,
       );
-      expect(outputFilePath).toEqual("temp-scaffold/fake-file.txt");
+      expect(outputFilePath).toEqual(`${TEST_DIRECTORY}/fake-file.txt`);
     });
   });
 

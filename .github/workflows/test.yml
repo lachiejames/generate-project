@@ -19,11 +19,17 @@ jobs:
         with:
           node-version-file: .nvmrc
 
-      - name: Install Yarn
+      - name: Install dependencies
         run: yarn install:ci
+
+      - name: Lint
+        run: yarn lint:ci
 
       - name: Build
         run: yarn build
 
-      - name: Test
+      - name: Unit tests
         run: yarn test
+
+      - name: E2E tests
+        run: yarn teste2e

@@ -1,10 +1,10 @@
 import { readdirSync } from "fs-extra";
-import { TEST_DIRECTORY, cleanTestDirectory, setMockPrompts } from "../testUtils/helpers";
-import { runScaffold } from "./scaffold";
+import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
+import { runScaffold } from "./runScaffold";
 
-describe("scaffold", () => {
+describe("runScaffold", () => {
   beforeEach(() => {
-    setMockPrompts();
+    setPromptMock();
   });
 
   afterEach(() => {
@@ -14,7 +14,7 @@ describe("scaffold", () => {
   describe("runScaffold()", () => {
     it("creates files for the provided template", async () => {
       expect(() => readdirSync(TEST_DIRECTORY)).toThrowError(
-        "ENOENT: no such file or directory, scandir 'temp-scaffold'",
+        `ENOENT: no such file or directory, scandir '${TEST_DIRECTORY}'`,
       );
 
       await runScaffold(TEST_DIRECTORY);
