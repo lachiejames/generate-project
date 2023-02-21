@@ -2,7 +2,7 @@ import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
 import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
-import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
+import { DEFAULT_ANSWERS } from "./defaultAnswers";
 
 import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, writeTemplateToFile } from "./fileHandler";
 
@@ -73,7 +73,7 @@ describe("fileHandler", () => {
       const template: Template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
       const outputFilePath = `${TEST_DIRECTORY}/package.json`;
 
-      writeTemplateToFile(template, outputFilePath, MOCK_ANSWERS);
+      writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
 
       expect(pathExistsSync(outputFilePath)).toEqual(true);
     });
@@ -83,7 +83,7 @@ describe("fileHandler", () => {
       const template: Template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
       const outputFilePath = `${TEST_DIRECTORY}/package.json`;
 
-      writeTemplateToFile(template, outputFilePath, MOCK_ANSWERS);
+      writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
 
       const templateFileContents: string = readFileSync("templates/ts-library/package.json", {
         encoding: "utf-8",

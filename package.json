@@ -9,10 +9,11 @@
   "scripts": {
     "install:ci": "yarn install --frozen-lockfile",
     "lint:ci": "eslint .",
+    "prebuild": "rm -rf dist",
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
-    "teste2e": "jest --detectOpenHandles ./e2e",
+    "e2etest": "jest --detectOpenHandles ./e2e",
     "format": "eslint . --fix; prettier . --write;"
   },
   "dependencies": {
@@ -31,9 +32,9 @@
     "@types/nunjucks": "3.2.0",
     "@typescript-eslint/eslint-plugin": "5.22.0",
     "@typescript-eslint/parser": "5.22.0",
+    "eslint": "8.14.0",
     "eslint-plugin-import": "2.26.0",
     "eslint-plugin-unused-imports": "1.1.4",
-    "eslint": "8.14.0",
     "jest": "28.0.3",
     "prettier": "2.6.2",
     "semantic-release": "19.0.2",

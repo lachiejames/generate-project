@@ -1,5 +1,5 @@
 import { cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
-import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
+import { DEFAULT_ANSWERS } from "./defaultAnswers";
 import { getTemplateNames, showPrompts } from "./prompts";
 
 describe("prompts", () => {
@@ -18,6 +18,6 @@ describe("prompts", () => {
 
   it("showPrompts() does stuff", async () => {
     const results = await showPrompts();
-    expect(results).toEqual(MOCK_ANSWERS);
+    expect(results).toEqual(DEFAULT_ANSWERS);
   });
 });

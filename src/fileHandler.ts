@@ -1,12 +1,10 @@
-import { relative } from "path";
-
+import path from "path";
 import { outputFileSync } from "fs-extra";
 import { sync } from "glob";
 import { Environment, FileSystemLoader, Template } from "nunjucks";
+import Config from "./models/prompts";
 
-import Prompts from "./models/prompts";
-
-export const ROOT_DIRECTORY = `${__dirname}/..`;
+export const ROOT_DIRECTORY = path.normalize(path.join(__dirname, ".."));
 
 export const loadNunjucksEnvironment = (): Environment => {
   const fileLoader = new FileSystemLoader(ROOT_DIRECTORY);
@@ -29,14 +27,14 @@ export const getOutputFilePath = (
   templateFilePath: string,
   projectDirectory: string,
 ): string => {
-  const relativeTemplateFilePath: string = relative(
+  const relativeTemplateFilePath: string = path.relative(
     `${ROOT_DIRECTORY}/templates/${selectedTemplate}`,
     templateFilePath,
   );
   return `${projectDirectory}/${relativeTemplateFilePath}`;
 };
 
-export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Prompts): void => {
+export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Config): void => {
   const outputString: string = template.render(answers);
 
   outputFileSync(outputFilePath, outputString);

@@ -1,8 +1,8 @@
-import Prompts from "../src/models/prompts";
+import Config from "./models/prompts";
 
-export const MOCK_ANSWERS: Prompts = {
+export const DEFAULT_ANSWERS: Config = {
   selectedTemplate: "ts-library",
   packageName: "my-new-package",
   packageDescription: "Hot new JS framework",
-  author: "Lachie James",
+  author: "Open Sourcerer",
 };
