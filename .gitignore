@@ -6,3 +6,6 @@
 
 .DS_Store
 .env
+
+# When running tests, this directory gets created, populated, then deleted
+**/tempTestDir/**
