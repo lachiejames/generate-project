@@ -1,10 +1,12 @@
-import { outputFileSync } from "fs-extra";
-import { Template } from "nunjucks";
+import fs from "fs-extra";
+import nunjucks from "nunjucks";
 
-import Config from "../models/prompts";
+import Config from "../models/config";
 
-export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Config): void => {
-  const outputString: string = template.render(answers);
+function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, answers: Config): void {
+  const outputString = template.render(answers);
 
-  outputFileSync(outputFilePath, outputString);
-};
+  fs.outputFileSync(outputFilePath, outputString);
+}
+
+export default writeTemplateToFile;

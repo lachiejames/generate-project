@@ -2,13 +2,13 @@ import inquirer from "inquirer";
 
 import DEFAULT_ANSWERS from "../constants/defaultAnswers";
 import getTemplateNames from "../io/getTemplateNames";
-import Prompts from "../models/prompts";
+import Config from "../models/config";
 
-async function showPrompts(): Promise<Prompts> {
+async function showPrompts(): Promise<Config> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  return inquirer.prompt<Prompts>([
+  return inquirer.prompt([
     {
       type: "list",
       name: "selectedTemplate",

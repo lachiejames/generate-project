@@ -1,21 +1,20 @@
-import { Environment, Template } from "nunjucks";
-
 import getOutputFilePath from "../io/getOutputFilePath";
 import getTemplateFilePaths from "../io/getTemplateFilePaths";
-import { writeTemplateToFile } from "../io/writeTemplateToFile";
-import Config from "../models/prompts";
+import writeTemplateToFile from "../io/writeTemplateToFile";
 import loadNunjucksEnvironment from "./loadNunjucksEnvironment";
 import showPrompts from "./showPrompts";
 
-export const runScaffold = async (projectDirectory: string): Promise<void> => {
-  const answers: Config = await showPrompts();
+async function runScaffold(projectDirectory: string): Promise<void> {
+  const answers = await showPrompts();
 
-  const templateEnvironment: Environment = loadNunjucksEnvironment();
-  const templateFilePaths: string[] = getTemplateFilePaths(answers.selectedTemplate);
+  const templateEnvironment = loadNunjucksEnvironment();
+  const templateFilePaths = getTemplateFilePaths(answers.selectedTemplate);
 
   for (const templateFilePath of templateFilePaths) {
-    const template: Template = templateEnvironment.getTemplate(templateFilePath);
-    const outputFilePath: string = getOutputFilePath(answers.selectedTemplate, templateFilePath, projectDirectory);
+    const template = templateEnvironment.getTemplate(templateFilePath);
+    const outputFilePath = getOutputFilePath(answers.selectedTemplate, templateFilePath, projectDirectory);
     writeTemplateToFile(template, outputFilePath, answers);
   }
-};
+}
+
+export default runScaffold;
