@@ -1,59 +1,22 @@
-import { execSync } from "child_process";
+/**
+ * IMPORTANT: This test suite should only be run after executing `bash ./e2e/preTest.sh`, which installs the local
+ * project as a global npm package and executes `generate-project` in a test directory.  This is the most comprehensive
+ * way to verify that everything works before publishing to NPM.
+ *
+ * Ideally I would use TS to write those parts and just `execSync(<insert bash commands here>)`,
+ * but that doesn't seem to work with the interactive CLI.  It just skips over the prompts.  So I'm using bash instead.
+ */
+
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
-import { injectPromptAnswers as injectPromptAnswers, cleanTestDirectory, TEST_DIRECTORY } from "../testUtils/helpers";
+import { TEST_DIRECTORY } from "../testUtils/helpers";
 import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
-
-function runCommand(command: string) {
-  execSync(command, { stdio: "inherit" });
-}
-
-function buildProject() {
-  runCommand("yarn install");
-  runCommand("yarn build");
-}
-
-function uninstallPackageGlobally() {
-  runCommand(`rm -rf *.tgz`);
-  runCommand(`npm uninstall -g @lachiejames/generate-project`);
-}
-
-function installPackageGlobally() {
-  runCommand(`npm pack`);
-  runCommand(`npm install -g *.tgz`);
-}
+import path from "path";
 
 describe("e2e", () => {
-  beforeAll(() => {
-    buildProject();
-
-    cleanTestDirectory(); // In case it wasn't already empty
-    uninstallPackageGlobally(); // In case it wasn't already uninstalled
-
-    installPackageGlobally();
-  });
-
-  beforeEach(() => {
-    injectPromptAnswers();
-  });
-
-  afterAll(() => {
-    uninstallPackageGlobally();
-  });
-
-  afterEach(() => {
-    cleanTestDirectory();
-  });
-
   it("produces the expected files", () => {
-    runCommand(`mkdir ${TEST_DIRECTORY}`);
-    runCommand(`cd ${TEST_DIRECTORY}`);
-    runCommand(`generate-project`);
-
-    const templateFilePaths: string[] = sync(TEST_DIRECTORY, {
-      dot: true,
-      nodir: true,
-    });
+    const templateFilePathsGlob = path.join(TEST_DIRECTORY, "**");
+    const templateFilePaths: string[] = sync(templateFilePathsGlob, { dot: true, nodir: true });
 
     console.log(templateFilePaths);
 
@@ -63,11 +26,7 @@ describe("e2e", () => {
     expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/dist/index.js`);
   });
 
-  it.skip("files contain expected content", () => {
-    runCommand(`mkdir ${TEST_DIRECTORY}`);
-    runCommand(`cd ${TEST_DIRECTORY}`);
-    runCommand(`generate-project`);
-
+  it("files contain expected content", () => {
     const packageJson = readFileSync(`${TEST_DIRECTORY}/package.json`, "utf8");
 
     expect(packageJson).toContain(`"name": "${MOCK_ANSWERS.packageName}"`);
