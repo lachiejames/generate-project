@@ -1,4 +1,5 @@
-import { cleanTestDirectory, setPromptMock } from "../../testUtils/helpers";
+import { cleanTestDirectory } from "../../testUtils/cleanTestDirectory";
+import { setPromptMock } from "../../testUtils/setPromptMock";
 import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
 import { showPrompts } from "./showPrompts";
 

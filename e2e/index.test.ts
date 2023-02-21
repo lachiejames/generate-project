@@ -12,7 +12,7 @@ import { readFileSync } from "fs-extra";
 import { sync } from "glob";
 
 import { DEFAULT_ANSWERS } from "../src/constants/defaultAnswers";
-import { TEST_DIRECTORY } from "../testUtils/helpers";
+import { TEST_DIRECTORY } from "../testUtils/testDirectory";
 
 describe("ts-library", () => {
   afterAll(() => {

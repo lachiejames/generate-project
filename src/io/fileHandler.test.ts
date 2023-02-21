@@ -1,7 +1,9 @@
 import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
-import { cleanTestDirectory, setPromptMock, TEST_DIRECTORY } from "../../testUtils/helpers";
+import { cleanTestDirectory } from "../../testUtils/cleanTestDirectory";
+import { setPromptMock } from "../../testUtils/setPromptMock";
+import { TEST_DIRECTORY } from "../../testUtils/testDirectory";
 import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
 import { loadNunjucksEnvironment } from "../scaffold/loadNunjucksEnvironment";
 import { getOutputFilePath } from "./getOutputFilePath";
