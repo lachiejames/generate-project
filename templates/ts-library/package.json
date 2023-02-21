@@ -12,7 +12,8 @@
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
-    "format": "eslint . --fix; prettier . --write;"
+    "format": "eslint . --fix; prettier . --write;",
+    "publish": "semantic-release"
   },
   "dependencies": {},
   "devDependencies": {

@@ -14,7 +14,8 @@
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
     "e2etest": "jest --detectOpenHandles ./e2e",
-    "format": "eslint . --fix; prettier . --write;"
+    "format": "eslint . --fix; prettier . --write;",
+    "publish": "semantic-release"
   },
   "dependencies": {
     "fs-extra": "11.1.0",
