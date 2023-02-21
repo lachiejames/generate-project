@@ -19,6 +19,6 @@ npm install -g *.tgz
 mkdir tempTestDir
 cd tempTestDir
 
-# Run the project, piping '' into all of the answers
+# Run the project, answering all questions with empty string (to use defaults)
 # This is the only way to test the project in a non-interactive way (that I know of)
 yes "" | generate-project

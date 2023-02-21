@@ -11,14 +11,10 @@ import { readFileSync } from "fs-extra";
 import { sync } from "glob";
 import { TEST_DIRECTORY } from "../testUtils/helpers";
 import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
-import path from "path";
 
-describe("e2e", () => {
+describe("ts-library", () => {
   it("produces the expected files", () => {
-    const templateFilePathsGlob = path.join(TEST_DIRECTORY, "**");
-    const templateFilePaths: string[] = sync(templateFilePathsGlob, { dot: true, nodir: true });
-
-    console.log(templateFilePaths);
+    const templateFilePaths: string[] = sync(`${TEST_DIRECTORY}/**`, { dot: true, nodir: true });
 
     expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/package.json`);
     expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/yarn.lock`);
@@ -27,10 +23,10 @@ describe("e2e", () => {
   });
 
   it("files contain expected content", () => {
-    const packageJson = readFileSync(`${TEST_DIRECTORY}/package.json`, "utf8");
+    const packageJsonContents = readFileSync(`${TEST_DIRECTORY}/package.json`, "utf8");
 
-    expect(packageJson).toContain(`"name": "${MOCK_ANSWERS.packageName}"`);
-    expect(packageJson).toContain(`"author": "${MOCK_ANSWERS.author}"`);
-    expect(packageJson).toContain(`"description": "${MOCK_ANSWERS.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"name": "${MOCK_ANSWERS.packageName}"`);
+    expect(packageJsonContents).toContain(`"description": "${MOCK_ANSWERS.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${MOCK_ANSWERS.author}"`);
   });
 });

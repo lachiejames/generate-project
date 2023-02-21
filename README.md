@@ -37,20 +37,26 @@ Install dependencies:
 yarn install
 ```
 
+Build the project:
+
+```
+yarn build
+```
+
 Run unit tests:
 
 ```
 yarn test
 ```
 
-Compile TypeScript to JavaScript:
-
-```
-yarn build
-```
-
-Test your changes:
+Run the project:
 
 ```
 yarn start
+```
+
+Install code globally as an npm package then execute E2E tests:
+
+```
+bash ./e2e/pretest.sh; yarn e2etest;
 ```
