@@ -11,8 +11,15 @@ import { readFileSync } from "fs-extra";
 import { sync } from "glob";
 import { DEFAULT_ANSWERS } from "../src/defaultAnswers";
 import { TEST_DIRECTORY } from "../testUtils/helpers";
+import { execSync } from "child_process";
 
 describe("ts-library", () => {
+  afterAll(() => {
+    // Clean up after ourselves
+    execSync(`rm -rf ${TEST_DIRECTORY}`);
+    execSync(`rm -rf *.tgz`);
+  });
+
   it("produces the expected files", () => {
     const templateFilePaths: string[] = sync(`${TEST_DIRECTORY}/**`, { dot: true, nodir: true });
 
