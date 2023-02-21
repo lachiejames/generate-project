@@ -7,12 +7,12 @@ export const getTemplateNames = (): string[] => {
   return readdirSync(`${ROOT_DIRECTORY}/templates`);
 };
 
-const getEmptyConfig = (): Config => {
+const getDefaultConfig = (): Config => {
   return {
-    selectedTemplate: "",
-    packageName: "",
-    packageDescription: "",
-    author: "",
+    selectedTemplate: "ts-library",
+    packageName: "my-new-package",
+    packageDescription: "Hot new JS framework",
+    author: "Lachie James",
   };
 };
 
@@ -64,13 +64,13 @@ export const showPrompts = async (): Promise<Config> => {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  const config: Config = getEmptyConfig();
+  const config: Config = getDefaultConfig();
 
   // prompts will halt execution between each of these
-  config.selectedTemplate = await getSelectedTemplate();
-  config.packageName = await getPackageName();
-  config.packageDescription = await getPackageDescription();
-  config.author = await getAuthor();
+  config.selectedTemplate = (await getSelectedTemplate()) || config.selectedTemplate;
+  config.packageName = (await getPackageName()) || config.packageName;
+  config.packageDescription = (await getPackageDescription()) || config.packageDescription;
+  config.author = (await getAuthor()) || config.author;
 
   return config;
 };
