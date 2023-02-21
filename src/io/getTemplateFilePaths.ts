@@ -1,6 +1,6 @@
 import { sync } from "glob";
 
-import { ROOT_DIRECTORY } from "./fileHandler";
+import { ROOT_DIRECTORY } from "../constants/rootDirectory";
 
 export const getTemplateFilePaths = (selectedTemplate: string): string[] => {
   const templateFilePathsGlob = `${ROOT_DIRECTORY}/templates/${selectedTemplate}/**`;

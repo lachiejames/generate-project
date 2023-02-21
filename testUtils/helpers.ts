@@ -3,7 +3,7 @@ import inquirer from "inquirer";
 import path from "path";
 
 import { DEFAULT_ANSWERS } from "../src/constants/defaultAnswers";
-import { ROOT_DIRECTORY } from "../src/io/fileHandler";
+import { ROOT_DIRECTORY } from "../src/constants/rootDirectory";
 
 // WARNING: this directory will be deleted on every test run, so don't put anything important in here
 export const TEST_DIRECTORY = path.join(ROOT_DIRECTORY, "tempTestDir");

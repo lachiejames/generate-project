@@ -1,7 +1,8 @@
 import { Environment, Template } from "nunjucks";
 
-import { getOutputFilePath, writeTemplateToFile } from "../io/fileHandler";
+import { getOutputFilePath } from "../io/getOutputFilePath";
 import { getTemplateFilePaths } from "../io/getTemplateFilePaths";
+import { writeTemplateToFile } from "../io/writeTemplateToFile";
 import Config from "../models/prompts";
 import { loadNunjucksEnvironment } from "./loadNunjucksEnvironment";
 import { showPrompts } from "./showPrompts";

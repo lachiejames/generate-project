@@ -4,8 +4,9 @@ import { Environment, Template } from "nunjucks";
 import { cleanTestDirectory, setPromptMock, TEST_DIRECTORY } from "../../testUtils/helpers";
 import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
 import { loadNunjucksEnvironment } from "../scaffold/loadNunjucksEnvironment";
-import { getOutputFilePath, writeTemplateToFile } from "./fileHandler";
+import { getOutputFilePath } from "./getOutputFilePath";
 import { getTemplateFilePaths } from "./getTemplateFilePaths";
+import { writeTemplateToFile } from "./writeTemplateToFile";
 
 describe("fileHandler", () => {
   beforeEach(() => {
