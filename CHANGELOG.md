@@ -1,3 +1,10 @@
+## [1.0.6](https://github.com/lachiejames/generate-project/compare/v1.0.5...v1.0.6) (2023-02-21)
+
+
+### Bug Fixes
+
+* another refactor ([#7](https://github.com/lachiejames/generate-project/issues/7)) ([01c6e5f](https://github.com/lachiejames/generate-project/commit/01c6e5fcf7e56c9871c2da220be9227418a77cc8))
+
 ## [1.0.5](https://github.com/lachiejames/generate-project/compare/v1.0.4...v1.0.5) (2023-02-21)
 
 
