@@ -1,3 +1,10 @@
+## [1.0.3](https://github.com/lachiejames/generate-project/compare/v1.0.2...v1.0.3) (2023-02-21)
+
+
+### Bug Fixes
+
+* add more tests ([#4](https://github.com/lachiejames/generate-project/issues/4)) ([d303b53](https://github.com/lachiejames/generate-project/commit/d303b53496d322d9b0751e96a7079e5764ec97ec))
+
 ## [1.0.2](https://github.com/lachiejames/generate-project/compare/v1.0.1...v1.0.2) (2023-02-21)
 
 
