@@ -1,3 +1,10 @@
+## [1.0.2](https://github.com/lachiejames/generate-project/compare/v1.0.1...v1.0.2) (2023-02-21)
+
+
+### Bug Fixes
+
+* update npm publish config ([#3](https://github.com/lachiejames/generate-project/issues/3)) ([32b3c0a](https://github.com/lachiejames/generate-project/commit/32b3c0ac5bc7af98dea91d3a68142b4e07c3e1e0))
+
 ## [1.0.1](https://github.com/lachiejames/generate-project/compare/v1.0.0...v1.0.1) (2023-02-21)
 
 
