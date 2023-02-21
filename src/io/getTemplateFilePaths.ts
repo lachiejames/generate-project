@@ -1,9 +1,9 @@
 import { sync } from "glob";
 
-import { ROOT_DIRECTORY } from "../constants/rootDirectory";
+import rootDir from "../constants/rootDir";
 
-export const getTemplateFilePaths = (selectedTemplate: string): string[] => {
-  const templateFilePathsGlob = `${ROOT_DIRECTORY}/templates/${selectedTemplate}/**`;
+function getTemplateFilePaths(selectedTemplate: string): string[] {
+  const templateFilePathsGlob = `${rootDir}/templates/${selectedTemplate}/**`;
   const templateFilePaths: string[] = sync(templateFilePathsGlob, { dot: true, nodir: true });
 
   if (templateFilePaths.length === 0) {
@@ -11,4 +11,6 @@ export const getTemplateFilePaths = (selectedTemplate: string): string[] => {
   }
 
   return templateFilePaths;
-};
+}
+
+export default getTemplateFilePaths;

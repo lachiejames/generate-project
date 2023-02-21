@@ -1,7 +1,9 @@
 import { readdirSync } from "fs-extra";
 
-import { ROOT_DIRECTORY } from "../constants/rootDirectory";
+import rootDir from "../constants/rootDir";
 
-export const getTemplateNames = (): string[] => {
-  return readdirSync(`${ROOT_DIRECTORY}/templates`);
-};
+function getTemplateNames(): string[] {
+  return readdirSync(`${rootDir}/templates`);
+}
+
+export default getTemplateNames;

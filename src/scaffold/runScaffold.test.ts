@@ -1,8 +1,8 @@
 import { readdirSync } from "fs-extra";
 
-import { cleanTestDirectory } from "../../testUtils/cleanTestDirectory";
-import { setPromptMock } from "../../testUtils/setPromptMock";
-import { TEST_DIRECTORY } from "../../testUtils/testDirectory";
+import cleanTestDir from "../../testUtils/cleanTestDir";
+import setPromptMock from "../../testUtils/setPromptMock";
+import testDir from "../../testUtils/testDir";
 import { runScaffold } from "./runScaffold";
 
 describe("runScaffold", () => {
@@ -11,18 +11,16 @@ describe("runScaffold", () => {
   });
 
   afterEach(() => {
-    cleanTestDirectory();
+    cleanTestDir();
   });
 
   describe("runScaffold()", () => {
     it("creates files for the provided template", async () => {
-      expect(() => readdirSync(TEST_DIRECTORY)).toThrowError(
-        `ENOENT: no such file or directory, scandir '${TEST_DIRECTORY}'`,
-      );
+      expect(() => readdirSync(testDir)).toThrowError(`ENOENT: no such file or directory, scandir '${testDir}'`);
 
-      await runScaffold(TEST_DIRECTORY);
+      await runScaffold(testDir);
 
-      expect(readdirSync(TEST_DIRECTORY)).toContain("package.json");
+      expect(readdirSync(testDir)).toContain("package.json");
     });
   });
 });

@@ -1,4 +1,4 @@
-import { getTemplateNames } from "./getTemplateNames";
+import getTemplateNames from "./getTemplateNames";
 
 describe("showPrompts", () => {
   it("getTemplateNames() returns a list of templates", () => {

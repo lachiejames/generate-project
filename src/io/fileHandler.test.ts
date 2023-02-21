@@ -1,13 +1,13 @@
 import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
-import { cleanTestDirectory } from "../../testUtils/cleanTestDirectory";
-import { setPromptMock } from "../../testUtils/setPromptMock";
-import { TEST_DIRECTORY } from "../../testUtils/testDirectory";
-import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
-import { loadNunjucksEnvironment } from "../scaffold/loadNunjucksEnvironment";
-import { getOutputFilePath } from "./getOutputFilePath";
-import { getTemplateFilePaths } from "./getTemplateFilePaths";
+import cleanTestDir from "../../testUtils/cleanTestDir";
+import setPromptMock from "../../testUtils/setPromptMock";
+import testDir from "../../testUtils/testDir";
+import DEFAULT_ANSWERS from "../constants/defaultAnswers";
+import loadNunjucksEnvironment from "../scaffold/loadNunjucksEnvironment";
+import getOutputFilePath from "./getOutputFilePath";
+import getTemplateFilePaths from "./getTemplateFilePaths";
 import { writeTemplateToFile } from "./writeTemplateToFile";
 
 describe("fileHandler", () => {
@@ -16,7 +16,7 @@ describe("fileHandler", () => {
   });
 
   afterEach(() => {
-    cleanTestDirectory();
+    cleanTestDir();
   });
 
   describe("loadNunjucksEnvironment()", () => {
@@ -53,21 +53,17 @@ describe("fileHandler", () => {
 
   describe("getOutputFilePath()", () => {
     it("returns relative template file path mapped onto the projectDirectory", () => {
-      const outputFilePath: string = getOutputFilePath(
-        "ts-library",
-        "templates/ts-library/package.json",
-        TEST_DIRECTORY,
-      );
-      expect(outputFilePath).toEqual(`${TEST_DIRECTORY}/package.json`);
+      const outputFilePath: string = getOutputFilePath("ts-library", "templates/ts-library/package.json", testDir);
+      expect(outputFilePath).toEqual(`${testDir}/package.json`);
     });
 
     it("will succeed even if path does not exist", () => {
       const outputFilePath: string = getOutputFilePath(
         "fake-template-folder",
         "templates/fake-template-folder/fake-file.txt",
-        TEST_DIRECTORY,
+        testDir,
       );
-      expect(outputFilePath).toEqual(`${TEST_DIRECTORY}/fake-file.txt`);
+      expect(outputFilePath).toEqual(`${testDir}/fake-file.txt`);
     });
   });
 
@@ -75,7 +71,7 @@ describe("fileHandler", () => {
     it("writes file to outputFilePath", () => {
       const nunjucksEnvironment: Environment = loadNunjucksEnvironment();
       const template: Template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
-      const outputFilePath = `${TEST_DIRECTORY}/package.json`;
+      const outputFilePath = `${testDir}/package.json`;
 
       writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
 
@@ -85,14 +81,14 @@ describe("fileHandler", () => {
     it("output file contains nunjucks-rendered version of template file", () => {
       const nunjucksEnvironment: Environment = loadNunjucksEnvironment();
       const template: Template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
-      const outputFilePath = `${TEST_DIRECTORY}/package.json`;
+      const outputFilePath = `${testDir}/package.json`;
 
       writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
 
       const templateFileContents: string = readFileSync("templates/ts-library/package.json", {
         encoding: "utf-8",
       });
-      const outputFileContents = readFileSync(`${TEST_DIRECTORY}/package.json`, { encoding: "utf-8" });
+      const outputFileContents = readFileSync(`${testDir}/package.json`, { encoding: "utf-8" });
 
       expect(templateFileContents).toContain('"name": "{{ packageName }}"');
       expect(outputFileContents).toContain('"name": "my-new-package"');

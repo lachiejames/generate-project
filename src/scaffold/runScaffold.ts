@@ -1,11 +1,11 @@
 import { Environment, Template } from "nunjucks";
 
-import { getOutputFilePath } from "../io/getOutputFilePath";
-import { getTemplateFilePaths } from "../io/getTemplateFilePaths";
+import getOutputFilePath from "../io/getOutputFilePath";
+import getTemplateFilePaths from "../io/getTemplateFilePaths";
 import { writeTemplateToFile } from "../io/writeTemplateToFile";
 import Config from "../models/prompts";
-import { loadNunjucksEnvironment } from "./loadNunjucksEnvironment";
-import { showPrompts } from "./showPrompts";
+import loadNunjucksEnvironment from "./loadNunjucksEnvironment";
+import showPrompts from "./showPrompts";
 
 export const runScaffold = async (projectDirectory: string): Promise<void> => {
   const answers: Config = await showPrompts();

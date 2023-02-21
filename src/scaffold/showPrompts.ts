@@ -1,10 +1,10 @@
 import inquirer from "inquirer";
 
-import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
-import { getTemplateNames } from "../io/getTemplateNames";
+import DEFAULT_ANSWERS from "../constants/defaultAnswers";
+import getTemplateNames from "../io/getTemplateNames";
 import Prompts from "../models/prompts";
 
-export const showPrompts = async (): Promise<Prompts> => {
+async function showPrompts(): Promise<Prompts> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
@@ -35,4 +35,6 @@ export const showPrompts = async (): Promise<Prompts> => {
       default: DEFAULT_ANSWERS.author,
     },
   ]);
-};
+}
+
+export default showPrompts;

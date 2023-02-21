@@ -11,27 +11,27 @@ import { execSync } from "child_process";
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
 
-import { DEFAULT_ANSWERS } from "../src/constants/defaultAnswers";
-import { TEST_DIRECTORY } from "../testUtils/testDirectory";
+import DEFAULT_ANSWERS from "../src/constants/defaultAnswers";
+import testDir from "../testUtils/testDir";
 
 describe("ts-library", () => {
   afterAll(() => {
     // Clean up after ourselves
-    execSync(`rm -rf ${TEST_DIRECTORY}`);
+    execSync(`rm -rf ${testDir}`);
     execSync(`rm -rf *.tgz`);
   });
 
   it("produces the expected files", () => {
-    const templateFilePaths: string[] = sync(`${TEST_DIRECTORY}/**`, { dot: true, nodir: true });
+    const templateFilePaths: string[] = sync(`${testDir}/**`, { dot: true, nodir: true });
 
-    expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/package.json`);
-    expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/yarn.lock`);
-    expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/src/index.ts`);
-    expect(templateFilePaths).toContain(`${TEST_DIRECTORY}/dist/index.js`);
+    expect(templateFilePaths).toContain(`${testDir}/package.json`);
+    expect(templateFilePaths).toContain(`${testDir}/yarn.lock`);
+    expect(templateFilePaths).toContain(`${testDir}/src/index.ts`);
+    expect(templateFilePaths).toContain(`${testDir}/dist/index.js`);
   });
 
   it("files contain expected content", () => {
-    const packageJsonContents = readFileSync(`${TEST_DIRECTORY}/package.json`, "utf8");
+    const packageJsonContents = readFileSync(`${testDir}/package.json`, "utf8");
 
     expect(packageJsonContents).toContain(`"name": "${DEFAULT_ANSWERS.packageName}"`);
     expect(packageJsonContents).toContain(`"description": "${DEFAULT_ANSWERS.packageDescription}"`);

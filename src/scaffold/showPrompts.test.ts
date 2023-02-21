@@ -1,7 +1,7 @@
-import { cleanTestDirectory } from "../../testUtils/cleanTestDirectory";
-import { setPromptMock } from "../../testUtils/setPromptMock";
-import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
-import { showPrompts } from "./showPrompts";
+import cleanTestDir from "../../testUtils/cleanTestDir";
+import setPromptMock from "../../testUtils/setPromptMock";
+import DEFAULT_ANSWERS from "../constants/defaultAnswers";
+import showPrompts from "./showPrompts";
 
 describe("showPrompts", () => {
   beforeEach(() => {
@@ -9,7 +9,7 @@ describe("showPrompts", () => {
   });
 
   afterEach(() => {
-    cleanTestDirectory();
+    cleanTestDir();
   });
 
   it("showPrompts() does stuff", async () => {
