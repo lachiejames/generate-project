@@ -9,3 +9,4 @@
 
 # When running tests, this directory gets created, populated, then deleted
 **/tempTestDir/**
+*.tgz

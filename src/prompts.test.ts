@@ -1,10 +1,10 @@
-import { cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
+import { cleanTestDirectory, injectPromptAnswers } from "../testUtils/helpers";
 import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 import { getTemplateNames, showPrompts } from "./prompts";
 
 describe("prompts", () => {
   beforeEach(() => {
-    setPromptMock();
+    injectPromptAnswers();
   });
 
   afterEach(() => {

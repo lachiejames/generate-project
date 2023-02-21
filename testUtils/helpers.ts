@@ -4,7 +4,7 @@ import prompts from "prompts";
 // WARNING: this directory will be deleted on every test run, so don't put anything important in here
 export const TEST_DIRECTORY = "tempTestDir";
 
-export const setPromptMock = (): void => {
+export const injectPromptAnswers = (): void => {
   prompts.inject(["ts-library", "my-new-package", "Hot new JS framework", "Lachie James"]);
 };
 

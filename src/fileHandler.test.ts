@@ -1,14 +1,14 @@
 import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
-import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
+import { TEST_DIRECTORY, cleanTestDirectory, injectPromptAnswers } from "../testUtils/helpers";
 import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 
 import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, writeTemplateToFile } from "./fileHandler";
 
 describe("fileHandler", () => {
   beforeEach(() => {
-    setPromptMock();
+    injectPromptAnswers();
   });
 
   afterEach(() => {

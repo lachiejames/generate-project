@@ -1,7 +1,7 @@
 import { execSync } from "child_process";
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
-import { setPromptMock, cleanTestDirectory, TEST_DIRECTORY } from "../testUtils/helpers";
+import { injectPromptAnswers as injectPromptAnswers, cleanTestDirectory, TEST_DIRECTORY } from "../testUtils/helpers";
 import { MOCK_ANSWERS } from "../testUtils/mockAnswers";
 
 function runCommand(command: string) {
@@ -34,7 +34,7 @@ describe("e2e", () => {
   });
 
   beforeEach(() => {
-    setPromptMock();
+    injectPromptAnswers();
   });
 
   afterAll(() => {
