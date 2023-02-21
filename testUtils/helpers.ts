@@ -1,13 +1,11 @@
 import { rmSync } from "fs-extra";
-import inquirer from "inquirer";
-
-import { MOCK_ANSWERS } from "./mockAnswers";
+import prompts from "prompts";
 
 // WARNING: this directory will be deleted on every test run, so don't put anything important in here
 export const TEST_DIRECTORY = "tempTestDir";
 
 export const setPromptMock = (): void => {
-  inquirer.prompt = jest.fn((_) => Promise.resolve(MOCK_ANSWERS)) as unknown as never;
+  prompts.inject(["ts-library", "my-new-package", "Hot new JS framework", "Lachie James"]);
 };
 
 export const cleanTestDirectory = (): void => {

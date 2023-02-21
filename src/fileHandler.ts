@@ -4,7 +4,7 @@ import { outputFileSync } from "fs-extra";
 import { sync } from "glob";
 import { Environment, FileSystemLoader, Template } from "nunjucks";
 
-import Prompts from "./models/prompts";
+import Config from "./models/prompts";
 
 export const ROOT_DIRECTORY = `${__dirname}/..`;
 
@@ -36,7 +36,7 @@ export const getOutputFilePath = (
   return `${projectDirectory}/${relativeTemplateFilePath}`;
 };
 
-export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Prompts): void => {
+export const writeTemplateToFile = (template: Template, outputFilePath: string, answers: Config): void => {
   const outputString: string = template.render(answers);
 
   outputFileSync(outputFilePath, outputString);
