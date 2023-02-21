@@ -1,7 +1,6 @@
 import { readdirSync } from "fs-extra";
-import { prompt } from "inquirer";
+import inquirer from "inquirer";
 import { DEFAULT_ANSWERS } from "./defaultAnswers";
-
 import { ROOT_DIRECTORY } from "./fileHandler";
 import Prompts from "./models/prompts";
 
@@ -13,7 +12,7 @@ export const showPrompts = async (): Promise<Prompts> => {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  return prompt<Prompts>([
+  return inquirer.prompt<Prompts>([
     {
       type: "list",
       name: "selectedTemplate",

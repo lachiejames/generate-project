@@ -7,6 +7,14 @@
 
 An interactive command-line tool to quickly setup new TypeScript projects. This includes installing the required dependencies and adding configuration files.
 
+## Requirements
+
+This tool requires the following to be installed:
+
+- Node (v18+ to ensure compatibility with the latest versions of the installed packages)
+- Yarn
+- Git
+
 ## Usage
 
 1. Install this package globally:

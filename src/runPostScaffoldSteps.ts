@@ -6,6 +6,7 @@ const runStep = (script: string, terminalText: string): void => {
 };
 
 export const runPostScaffoldSteps = (): void => {
+  runStep("git init", "Initialising git with `git init`");
   runStep("yarn install", "Installing dependencies with `yarn install`");
   runStep("yarn format", "Making files pretty with `yarn format`");
   runStep("yarn build", "Compiling TS->JS with `yarn build`");
