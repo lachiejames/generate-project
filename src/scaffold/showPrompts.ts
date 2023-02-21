@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 
-import { DEFAULT_ANSWERS } from "./constants/defaultAnswers";
-import { getTemplateNames } from "./getTemplateNames";
-import Prompts from "./models/prompts";
+import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
+import { getTemplateNames } from "../io/getTemplateNames";
+import Prompts from "../models/prompts";
 
 export const showPrompts = async (): Promise<Prompts> => {
   console.clear();

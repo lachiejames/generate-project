@@ -1,5 +1,5 @@
-import { cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
-import { DEFAULT_ANSWERS } from "./constants/defaultAnswers";
+import { cleanTestDirectory, setPromptMock } from "../../testUtils/helpers";
+import { DEFAULT_ANSWERS } from "../constants/defaultAnswers";
 import { showPrompts } from "./showPrompts";
 
 describe("showPrompts", () => {
