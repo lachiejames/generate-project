@@ -58,5 +58,5 @@ yarn start
 Install code globally as an npm package then execute E2E tests:
 
 ```
-bash ./e2e/pretest.sh; yarn e2etest;
+bash ./e2e/preTest.sh; yarn e2etest;
 ```

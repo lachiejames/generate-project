@@ -33,5 +33,5 @@ jobs:
 
       - name: E2E tests
         run: |
-          bash ./e2e/pretest.sh
+          bash ./e2e/preTest.sh
           yarn e2etest
