@@ -9,7 +9,7 @@
 
 import { readFileSync } from "fs-extra";
 import { sync } from "glob";
-import { DEFAULT_ANSWERS } from "../src/defaultAnswers";
+import { DEFAULT_ANSWERS } from "../src/constants/defaultAnswers";
 import { TEST_DIRECTORY } from "../testUtils/helpers";
 import { execSync } from "child_process";
 

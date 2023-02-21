@@ -1,12 +1,7 @@
-import { readdirSync } from "fs-extra";
 import inquirer from "inquirer";
-import { DEFAULT_ANSWERS } from "./defaultAnswers";
-import { ROOT_DIRECTORY } from "./fileHandler";
+import { DEFAULT_ANSWERS } from "./constants/defaultAnswers";
 import Prompts from "./models/prompts";
-
-export const getTemplateNames = (): string[] => {
-  return readdirSync(`${ROOT_DIRECTORY}/templates`);
-};
+import { getTemplateNames } from "./getTemplateNames";
 
 export const showPrompts = async (): Promise<Prompts> => {
   console.clear();

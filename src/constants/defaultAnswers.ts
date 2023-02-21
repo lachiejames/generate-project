@@ -1,4 +1,4 @@
-import Config from "./models/prompts";
+import Config from "../models/prompts";
 
 export const DEFAULT_ANSWERS: Config = {
   selectedTemplate: "ts-library",

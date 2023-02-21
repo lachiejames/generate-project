@@ -2,9 +2,11 @@ import { pathExistsSync, readFileSync } from "fs-extra";
 import { Environment, Template } from "nunjucks";
 
 import { TEST_DIRECTORY, cleanTestDirectory, setPromptMock } from "../testUtils/helpers";
-import { DEFAULT_ANSWERS } from "./defaultAnswers";
+import { DEFAULT_ANSWERS } from "./constants/defaultAnswers";
 
-import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, writeTemplateToFile } from "./fileHandler";
+import { getOutputFilePath, writeTemplateToFile } from "./fileHandler";
+import { getTemplateFilePaths } from "./getTemplateFilePaths";
+import { loadNunjucksEnvironment } from "./loadNunjucksEnvironment";
 
 describe("fileHandler", () => {
   beforeEach(() => {
