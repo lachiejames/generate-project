@@ -12,19 +12,19 @@ Install dependencies:
 yarn install
 ```
 
+Build the project:
+
+```
+yarn build
+```
+
 Run unit tests:
 
 ```
 yarn test
 ```
 
-Compile TypeScript to JavaScript:
-
-```
-yarn build
-```
-
-Test your changes:
+Run the project:
 
 ```
 yarn start

@@ -1,18 +1,14 @@
-import { readdirSync } from "fs-extra";
 import inquirer from "inquirer";
-import { DEFAULT_ANSWERS } from "./defaultAnswers";
-import { ROOT_DIRECTORY } from "./fileHandler";
-import Prompts from "./models/prompts";
 
-export const getTemplateNames = (): string[] => {
-  return readdirSync(`${ROOT_DIRECTORY}/templates`);
-};
+import DEFAULT_ANSWERS from "../constants/defaultAnswers";
+import getTemplateNames from "../io/getTemplateNames";
+import Config from "../models/config";
 
-export const showPrompts = async (): Promise<Prompts> => {
+async function showPrompts(): Promise<Config> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  return inquirer.prompt<Prompts>([
+  return inquirer.prompt([
     {
       type: "list",
       name: "selectedTemplate",
@@ -39,4 +35,6 @@ export const showPrompts = async (): Promise<Prompts> => {
       default: DEFAULT_ANSWERS.author,
     },
   ]);
-};
+}
+
+export default showPrompts;
