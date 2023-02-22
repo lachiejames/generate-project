@@ -1,3 +1,4 @@
-import { runPostScaffoldSteps,runScaffold } from "./scaffold";
-
-runScaffold(process.cwd()).then(() => runPostScaffoldSteps());
+export * from "./constants";
+export * from "./io";
+export * from "./models";
+export * from "./scaffold";
