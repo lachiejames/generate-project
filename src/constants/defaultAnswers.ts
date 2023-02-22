@@ -1,4 +1,4 @@
-import Config from "../models/config";
+import { Config } from "../models";
 
 const defaultAnswers: Config = {
   selectedTemplate: "ts-library",
