@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 
-const GITIGNORE_CONTENTS = `
+const GITIGNORE_CONTENTS = `# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
 **/.idea/**
 **/.vscode/**
 **/coverage/**
