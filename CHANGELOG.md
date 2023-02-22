@@ -1,3 +1,10 @@
+## [1.0.8](https://github.com/lachiejames/generate-project/compare/v1.0.7...v1.0.8) (2023-02-22)
+
+
+### Bug Fixes
+
+* insert .gitignore after scaffolding ([#9](https://github.com/lachiejames/generate-project/issues/9)) ([0dc1890](https://github.com/lachiejames/generate-project/commit/0dc1890758f33ed80cf58279a879134a0a9b1e7a))
+
 ## [1.0.7](https://github.com/lachiejames/generate-project/compare/v1.0.6...v1.0.7) (2023-02-22)
 
 
