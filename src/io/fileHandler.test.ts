@@ -1,13 +1,13 @@
 import fs from "fs-extra";
 
-import cleanTestDir from "../../testUtils/cleanTestDir";
-import setPromptMock from "../../testUtils/setPromptMock";
-import testDir from "../../testUtils/testDir";
-import DEFAULT_ANSWERS from "../constants/defaultAnswers";
-import loadNunjucksEnvironment from "../scaffold/loadNunjucksEnvironment";
-import getOutputFilePath from "./getOutputFilePath";
-import getTemplateFilePaths from "./getTemplateFilePaths";
-import writeTemplateToFile from "./writeTemplateToFile";
+import { cleanTestDir, setPromptMock, testDir } from "../../testUtils";
+import {
+  defaultAnswers,
+  getOutputFilePath,
+  getTemplateFilePaths,
+  loadNunjucksEnvironment,
+  writeTemplateToFile,
+} from "..";
 
 describe("fileHandler", () => {
   beforeEach(() => {
@@ -72,7 +72,7 @@ describe("fileHandler", () => {
       const template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
       const outputFilePath = `${testDir}/package.json`;
 
-      writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
+      writeTemplateToFile(template, outputFilePath, defaultAnswers);
 
       expect(fs.pathExistsSync(outputFilePath)).toEqual(true);
     });
@@ -82,7 +82,7 @@ describe("fileHandler", () => {
       const template = nunjucksEnvironment.getTemplate("templates/ts-library/package.json");
       const outputFilePath = `${testDir}/package.json`;
 
-      writeTemplateToFile(template, outputFilePath, DEFAULT_ANSWERS);
+      writeTemplateToFile(template, outputFilePath, defaultAnswers);
 
       const templateFileContents = fs.readFileSync("templates/ts-library/package.json", {
         encoding: "utf-8",

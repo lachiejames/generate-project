@@ -1,8 +1,6 @@
 import inquirer from "inquirer";
 
-import DEFAULT_ANSWERS from "../constants/defaultAnswers";
-import getTemplateNames from "../io/getTemplateNames";
-import Config from "../models/config";
+import { Config, defaultAnswers, listTemplates } from "..";
 
 async function showPrompts(): Promise<Config> {
   console.clear();
@@ -13,26 +11,26 @@ async function showPrompts(): Promise<Config> {
       type: "list",
       name: "selectedTemplate",
       message: "Select a template: ",
-      choices: getTemplateNames(),
-      default: DEFAULT_ANSWERS.selectedTemplate,
+      choices: listTemplates(),
+      default: defaultAnswers.selectedTemplate,
     },
     {
       type: "input",
       name: "packageName",
       message: "Project name: ",
-      default: DEFAULT_ANSWERS.packageName,
+      default: defaultAnswers.packageName,
     },
     {
       type: "input",
       name: "packageDescription",
       message: "Project description: ",
-      default: DEFAULT_ANSWERS.packageDescription,
+      default: defaultAnswers.packageDescription,
     },
     {
       type: "input",
       name: "author",
       message: "Project author: ",
-      default: DEFAULT_ANSWERS.author,
+      default: defaultAnswers.author,
     },
   ]);
 }

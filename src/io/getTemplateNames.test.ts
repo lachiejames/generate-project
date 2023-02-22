@@ -1,8 +1,8 @@
-import getTemplateNames from "./getTemplateNames";
+import { listTemplates } from ".";
 
 describe("showPrompts", () => {
-  it("getTemplateNames() returns a list of templates", () => {
-    const templates = getTemplateNames();
+  it("listTemplates() returns a list of templates", () => {
+    const templates = listTemplates();
     expect(templates.length).toBeGreaterThan(0);
   });
 });

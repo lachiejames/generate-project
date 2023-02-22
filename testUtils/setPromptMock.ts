@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
 
-import DEFAULT_ANSWERS from "../src/constants/defaultAnswers";
+import { defaultAnswers } from "../src";
 
 function setPromptMock(): void {
-  inquirer.prompt = jest.fn((_) => Promise.resolve(DEFAULT_ANSWERS)) as unknown as never;
+  inquirer.prompt = jest.fn((_) => Promise.resolve(defaultAnswers)) as unknown as never;
 }
 
 export default setPromptMock;

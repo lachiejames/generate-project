@@ -19,5 +19,12 @@ module.exports = {
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "func-style": ["warn", "declaration"],
+    "import/no-useless-path-segments": [
+      "warn",
+      {
+        noUselessIndex: true,
+        commonjs: true,
+      },
+    ],
   },
 };

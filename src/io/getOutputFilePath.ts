@@ -1,10 +1,15 @@
 import path from "path";
 
-import rootDir from "../constants/rootDir";
+import { rootDir } from ".";
 
-function getOutputFilePath(selectedTemplate: string, templateFilePath: string, projectDirectory: string): string {
-  const relativeTemplateFilePath = path.relative(`${rootDir}/templates/${selectedTemplate}`, templateFilePath);
-  return `${projectDirectory}/${relativeTemplateFilePath}`;
+function getOutputFilePath(
+  selectedTemplate: string,
+  templateFilePathFromTemplate: string,
+  projectDirectory: string,
+): string {
+  const templateFilePathFromRoot = path.join(rootDir, "templates", selectedTemplate);
+  const relativeTemplateFilePath = path.relative(templateFilePathFromRoot, templateFilePathFromTemplate);
+  return path.join(projectDirectory, relativeTemplateFilePath);
 }
 
 export default getOutputFilePath;
