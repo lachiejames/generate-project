@@ -1,11 +1,15 @@
 import childProcess from "child_process";
 
+import { insertGitIgnore } from "..";
+
 function runStep(script: string, terminalText: string): void {
   console.log(`\n🔨 ${terminalText} 🔨`);
   childProcess.execSync(script, { stdio: "inherit" });
 }
 
-function runPostScaffoldSteps(): void {
+function runPostScaffoldSteps(projectDir: string): void {
+  insertGitIgnore(projectDir);
+
   runStep("git init", "Initialising git with `git init`");
   runStep("yarn install", "Installing dependencies with `yarn install`");
   runStep("yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`");

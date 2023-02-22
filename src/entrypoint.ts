@@ -1,3 +1,5 @@
 import { runPostScaffoldSteps, runScaffold } from "./scaffold";
 
-runScaffold(process.cwd()).then(() => runPostScaffoldSteps());
+const projectDir = process.cwd();
+
+runScaffold(projectDir).then(() => runPostScaffoldSteps(projectDir));

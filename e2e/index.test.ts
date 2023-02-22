@@ -22,12 +22,20 @@ describe("ts-library", () => {
   });
 
   it("produces the expected files", () => {
-    const templateFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
+    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
 
-    expect(templateFilePaths).toContain(`${testDir}/package.json`);
-    expect(templateFilePaths).toContain(`${testDir}/yarn.lock`);
-    expect(templateFilePaths).toContain(`${testDir}/src/index.ts`);
-    expect(templateFilePaths).toContain(`${testDir}/dist/index.js`);
+    // Ensure src files were copied over
+    expect(outputFilePaths).toContain(`${testDir}/package.json`);
+    expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+
+    // Ensure `yarn install` was successful
+    expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
+
+    // Ensure `yarn build` was successful
+    expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+
+    // Ensure .gitignore is copied over (as a post-scaffold step)
+    expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
   });
 
   it("files contain expected content", () => {
