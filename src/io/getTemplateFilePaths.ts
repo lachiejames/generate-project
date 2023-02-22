@@ -1,6 +1,6 @@
 import glob from "glob";
 
-import rootDir from "../constants/rootDir";
+import rootDir from "./rootDir";
 
 function getTemplateFilePaths(selectedTemplate: string): string[] {
   const templateFilePathsGlob = `${rootDir}/templates/${selectedTemplate}/**`;

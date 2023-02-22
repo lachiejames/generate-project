@@ -1,6 +1,6 @@
 import nunjucks from "nunjucks";
 
-import rootDir from "../constants/rootDir";
+import rootDir from "../io/rootDir";
 
 function loadNunjucksEnvironment(): nunjucks.Environment {
   const fileLoader = new nunjucks.FileSystemLoader(rootDir);
