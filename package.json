@@ -1,6 +1,6 @@
 {
   "name": "@lachiejames/generate-project",
-  "version": "1.0.6",
+  "version": "1.0.7",
   "description": "CLI tool for generating projects with predefined templates",
   "author": "Lachie James",
   "license": "MIT",

@@ -1,3 +1,10 @@
+## [1.0.7](https://github.com/lachiejames/generate-project/compare/v1.0.6...v1.0.7) (2023-02-22)
+
+
+### Bug Fixes
+
+* hoist imports and exports ([#8](https://github.com/lachiejames/generate-project/issues/8)) ([8e70e28](https://github.com/lachiejames/generate-project/commit/8e70e280e59bb5e83be17bcf0e141a817f1cfb34))
+
 ## [1.0.6](https://github.com/lachiejames/generate-project/compare/v1.0.5...v1.0.6) (2023-02-21)
 
 
