@@ -1,8 +1,4 @@
-import getOutputFilePath from "../io/getOutputFilePath";
-import getTemplateFilePaths from "../io/getTemplateFilePaths";
-import writeTemplateToFile from "../io/writeTemplateToFile";
-import loadNunjucksEnvironment from "./loadNunjucksEnvironment";
-import showPrompts from "./showPrompts";
+import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, showPrompts, writeTemplateToFile } from "..";
 
 async function runScaffold(projectDirectory: string): Promise<void> {
   const answers = await showPrompts();

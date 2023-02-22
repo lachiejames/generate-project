@@ -1,7 +1,5 @@
-import cleanTestDir from "../../testUtils/cleanTestDir";
-import setPromptMock from "../../testUtils/setPromptMock";
-import defaultAnswers from "../constants/defaultAnswers";
-import showPrompts from "./showPrompts";
+import { cleanTestDir, setPromptMock } from "../../testUtils";
+import { defaultAnswers, showPrompts } from "..";
 
 describe("showPrompts", () => {
   beforeEach(() => {

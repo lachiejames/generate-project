@@ -1,13 +1,13 @@
 import fs from "fs-extra";
 
-import cleanTestDir from "../../testUtils/cleanTestDir";
-import setPromptMock from "../../testUtils/setPromptMock";
-import testDir from "../../testUtils/testDir";
-import defaultAnswers from "../constants/defaultAnswers";
-import loadNunjucksEnvironment from "../scaffold/loadNunjucksEnvironment";
-import getOutputFilePath from "./getOutputFilePath";
-import getTemplateFilePaths from "./getTemplateFilePaths";
-import writeTemplateToFile from "./writeTemplateToFile";
+import { cleanTestDir, setPromptMock, testDir } from "../../testUtils";
+import {
+  defaultAnswers,
+  getOutputFilePath,
+  getTemplateFilePaths,
+  loadNunjucksEnvironment,
+  writeTemplateToFile,
+} from "..";
 
 describe("fileHandler", () => {
   beforeEach(() => {

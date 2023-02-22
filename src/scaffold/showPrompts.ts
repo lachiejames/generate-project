@@ -1,8 +1,6 @@
 import inquirer from "inquirer";
 
-import defaultAnswers from "../constants/defaultAnswers";
-import listTemplates from "../io/listTemplates";
-import Config from "../models/config";
+import { Config, defaultAnswers, listTemplates } from "..";
 
 async function showPrompts(): Promise<Config> {
   console.clear();

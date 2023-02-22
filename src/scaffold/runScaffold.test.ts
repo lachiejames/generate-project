@@ -1,9 +1,7 @@
 import fs from "fs-extra";
 
-import cleanTestDir from "../../testUtils/cleanTestDir";
-import setPromptMock from "../../testUtils/setPromptMock";
-import testDir from "../../testUtils/testDir";
-import runScaffold from "./runScaffold";
+import { cleanTestDir, setPromptMock, testDir } from "../../testUtils";
+import { runScaffold } from ".";
 
 describe("runScaffold", () => {
   beforeEach(() => {

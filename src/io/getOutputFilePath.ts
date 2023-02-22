@@ -1,6 +1,6 @@
 import path from "path";
 
-import rootDir from "./rootDir";
+import { rootDir } from ".";
 
 function getOutputFilePath(
   selectedTemplate: string,

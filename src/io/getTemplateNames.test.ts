@@ -1,4 +1,4 @@
-import listTemplates from "./listTemplates";
+import { listTemplates } from ".";
 
 describe("showPrompts", () => {
   it("listTemplates() returns a list of templates", () => {
