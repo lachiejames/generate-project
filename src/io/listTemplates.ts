@@ -3,9 +3,9 @@ import path from "path";
 
 import rootDir from "./rootDir";
 
-function getTemplateNames(): string[] {
+function listTemplates(): string[] {
   const pathToTemplate = path.join(rootDir, "templates");
   return fs.readdirSync(pathToTemplate);
 }
 
-export default getTemplateNames;
+export default listTemplates;

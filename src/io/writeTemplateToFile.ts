@@ -5,7 +5,6 @@ import Config from "../models/config";
 
 function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, answers: Config): void {
   const outputString = template.render(answers);
-
   fs.outputFileSync(outputFilePath, outputString);
 }
 

@@ -1,7 +1,7 @@
 import inquirer from "inquirer";
 
 import DEFAULT_ANSWERS from "../constants/defaultAnswers";
-import getTemplateNames from "../io/getTemplateNames";
+import listTemplates from "../io/listTemplates";
 import Config from "../models/config";
 
 async function showPrompts(): Promise<Config> {
@@ -13,7 +13,7 @@ async function showPrompts(): Promise<Config> {
       type: "list",
       name: "selectedTemplate",
       message: "Select a template: ",
-      choices: getTemplateNames(),
+      choices: listTemplates(),
       default: DEFAULT_ANSWERS.selectedTemplate,
     },
     {
