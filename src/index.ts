@@ -1,4 +1,3 @@
-import runPostScaffoldSteps from "./scaffold/runPostScaffoldSteps";
-import runScaffold from "./scaffold/runScaffold";
+import { runPostScaffoldSteps,runScaffold } from "./scaffold";
 
 runScaffold(process.cwd()).then(() => runPostScaffoldSteps());
