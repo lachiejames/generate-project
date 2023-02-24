@@ -1,15 +1,15 @@
 import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, showPrompts, writeTemplateToFile } from "..";
 
 async function runScaffold(projectDirectory: string): Promise<void> {
-  const answers = await showPrompts();
+  const config = await showPrompts();
 
   const templateEnvironment = loadNunjucksEnvironment();
-  const templateFilePaths = getTemplateFilePaths(answers.selectedTemplate);
+  const templateFilePaths = getTemplateFilePaths(config.selectedTemplate);
 
   for (const templateFilePath of templateFilePaths) {
     const template = templateEnvironment.getTemplate(templateFilePath);
-    const outputFilePath = getOutputFilePath(answers.selectedTemplate, templateFilePath, projectDirectory);
-    writeTemplateToFile(template, outputFilePath, answers);
+    const outputFilePath = getOutputFilePath(config.selectedTemplate, templateFilePath, projectDirectory);
+    writeTemplateToFile(template, outputFilePath, config);
   }
 }
 

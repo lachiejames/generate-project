@@ -1,1 +1,1 @@
-export { default as defaultAnswers } from "./defaultAnswers";
+export { default as defaultConfig } from "./defaultConfig";

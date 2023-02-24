@@ -1,5 +1,5 @@
 import { cleanTestDir, setPromptMock } from "../../testUtils";
-import { defaultAnswers, showPrompts } from "..";
+import { defaultConfig, showPrompts } from "..";
 
 describe("showPrompts", () => {
   beforeEach(() => {
@@ -12,6 +12,6 @@ describe("showPrompts", () => {
 
   it("showPrompts() does stuff", async () => {
     const results = await showPrompts();
-    expect(results).toEqual(defaultAnswers);
+    expect(results).toEqual(defaultConfig);
   });
 });
