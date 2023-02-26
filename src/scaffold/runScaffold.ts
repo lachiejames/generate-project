@@ -1,7 +1,13 @@
-import { getOutputFilePath, getTemplateFilePaths, loadNunjucksEnvironment, showPrompts, writeTemplateToFile } from "..";
+import {
+  getConfigFromCli,
+  getOutputFilePath,
+  getTemplateFilePaths,
+  loadNunjucksEnvironment,
+  writeTemplateToFile,
+} from "..";
 
 async function runScaffold(projectDirectory: string): Promise<void> {
-  const config = await showPrompts();
+  const config = await getConfigFromCli();
 
   const templateEnvironment = loadNunjucksEnvironment();
   const templateFilePaths = getTemplateFilePaths(config.selectedTemplate);
