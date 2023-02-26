@@ -1,3 +1,10 @@
+## [1.0.9](https://github.com/lachiejames/generate-project/compare/v1.0.8...v1.0.9) (2023-02-26)
+
+
+### Bug Fixes
+
+* rename stuff ([#10](https://github.com/lachiejames/generate-project/issues/10)) ([12898b6](https://github.com/lachiejames/generate-project/commit/12898b6168e3ae4e22c6b73e755f8675c72c533c))
+
 ## [1.0.8](https://github.com/lachiejames/generate-project/compare/v1.0.7...v1.0.8) (2023-02-22)
 
 
