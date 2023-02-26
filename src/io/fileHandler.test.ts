@@ -51,7 +51,7 @@ describe("fileHandler", () => {
   });
 
   describe("getOutputFilePath()", () => {
-    it("returns relative template file path mapped onto the projectDirectory", () => {
+    it("returns relative template file path mapped onto the projectDir", () => {
       const outputFilePath = getOutputFilePath("ts-library", "templates/ts-library/package.json", testDir);
       expect(outputFilePath).toEqual(`${testDir}/package.json`);
     });

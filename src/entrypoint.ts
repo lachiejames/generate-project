@@ -1,10 +1,10 @@
-import { runPostScaffoldSteps, runScaffold } from "./scaffold";
+import { getConfigFromCli, runPostScaffoldSteps, runScaffold } from "./scaffold";
 
 async function run(): Promise<void> {
-  const projectDir = process.cwd();
+  const config = await getConfigFromCli();
 
-  await runScaffold(projectDir);
-  runPostScaffoldSteps(projectDir);
+  await runScaffold(config);
+  runPostScaffoldSteps(config);
 }
 
 run();
