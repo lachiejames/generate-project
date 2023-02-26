@@ -1,8 +1,8 @@
 import inquirer from "inquirer";
 
-import { Config, defaultAnswers, listTemplates } from "..";
+import { Config, defaultConfig, listTemplates } from "..";
 
-async function showPrompts(): Promise<Config> {
+async function getConfigFromCli(): Promise<Config> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
@@ -12,27 +12,27 @@ async function showPrompts(): Promise<Config> {
       name: "selectedTemplate",
       message: "Select a template: ",
       choices: listTemplates(),
-      default: defaultAnswers.selectedTemplate,
+      default: defaultConfig.selectedTemplate,
     },
     {
       type: "input",
       name: "packageName",
       message: "Project name: ",
-      default: defaultAnswers.packageName,
+      default: defaultConfig.packageName,
     },
     {
       type: "input",
       name: "packageDescription",
       message: "Project description: ",
-      default: defaultAnswers.packageDescription,
+      default: defaultConfig.packageDescription,
     },
     {
       type: "input",
       name: "author",
       message: "Project author: ",
-      default: defaultAnswers.author,
+      default: defaultConfig.author,
     },
   ]);
 }
 
-export default showPrompts;
+export default getConfigFromCli;
