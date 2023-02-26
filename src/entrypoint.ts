@@ -1,5 +1,10 @@
 import { runPostScaffoldSteps, runScaffold } from "./scaffold";
 
-const projectDir = process.cwd();
+async function run(): Promise<void> {
+  const projectDir = process.cwd();
 
-runScaffold(projectDir).then(() => runPostScaffoldSteps(projectDir));
+  await runScaffold(projectDir);
+  runPostScaffoldSteps(projectDir);
+}
+
+run();
