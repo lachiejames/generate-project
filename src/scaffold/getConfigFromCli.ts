@@ -2,7 +2,7 @@ import inquirer from "inquirer";
 
 import { Config, defaultConfig, listTemplates } from "..";
 
-async function showPrompts(): Promise<Config> {
+async function getConfigFromCli(): Promise<Config> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
@@ -35,4 +35,4 @@ async function showPrompts(): Promise<Config> {
   ]);
 }
 
-export default showPrompts;
+export default getConfigFromCli;
