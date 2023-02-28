@@ -68,14 +68,14 @@ async function getProjectAuthor(): Promise<string> {
 }
 
 async function getConfigFromCli(args: { [key: string]: any }): Promise<Config> {
-  console.log(args)
+  console.log(args);
   const config: Config = JSON.parse(JSON.stringify(defaultConfig));
 
-  config.projectDir = await getProjectDir();
-  config.selectedTemplate = await getSelectedTemplate();
-  config.packageName = await getPackageName();
-  config.packageDescription = await getProjectDescription();
-  config.author = await getProjectAuthor();
+  config.projectDir = args.projectDir ?? (await getProjectDir());
+  config.selectedTemplate = args.selectedTemplate ?? (await getSelectedTemplate());
+  config.packageName = args.packageName ?? (await getPackageName());
+  config.packageDescription = args.packageDescription ?? (await getProjectDescription());
+  config.author = args.author ?? (await getProjectAuthor());
 
   return config;
 }

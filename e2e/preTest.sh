@@ -20,8 +20,8 @@ mkdir tempTestDir
 cd tempTestDir
 
 generate-project \
-    --projectDir pwd
-    --selectedTemplate "ts-library"
-    --packageName "my-new-package"
+    --projectDir "~/dev/generate-project/tempTestDir" \
+    --selectedTemplate "ts-library" \
+    --packageName "my-new-package" \
     --packageDescription "Hot new JS framework" \
     --author "Open Sourcerer" 
