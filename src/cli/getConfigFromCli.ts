@@ -1,23 +1,6 @@
-import glob from "glob";
 import prompts from "prompts";
 
 import { Config, defaultConfig, listTemplates } from "..";
-
-async function getProjectDir(): Promise<string> {
-  const promptData = await prompts({
-    name: "projectDir",
-    type: "text",
-    message: "Project directory: ",
-    initial: defaultConfig.projectDir,
-    validate: (projectDir: string) => {
-      const projectDirFiles = glob.sync(`${projectDir}/**`, { dot: true, nodir: true });
-      if (projectDirFiles.length > 0) return `Directory already exists and is not empty: '${projectDir}'`;
-      return true;
-    },
-  });
-
-  return promptData.projectDir;
-}
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
@@ -67,11 +50,10 @@ async function getProjectAuthor(): Promise<string> {
   return promptData.author;
 }
 
-async function getConfigFromCli(args: { [key: string]: any }): Promise<Config> {
+async function getConfigFromCli(args: Record<string, string>): Promise<Config> {
   console.log(args);
   const config: Config = JSON.parse(JSON.stringify(defaultConfig));
 
-  config.projectDir = args.projectDir ?? (await getProjectDir());
   config.selectedTemplate = args.selectedTemplate ?? (await getSelectedTemplate());
   config.packageName = args.packageName ?? (await getPackageName());
   config.packageDescription = args.packageDescription ?? (await getProjectDescription());

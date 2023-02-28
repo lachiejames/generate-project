@@ -1,14 +1,13 @@
 import prompts from "prompts";
 
-import testConfig from "./testConfig";
+import { defaultConfig } from "../src";
 
 function setPromptMock(): void {
   prompts.inject([
-    testConfig.projectDir,
-    testConfig.selectedTemplate,
-    testConfig.packageName,
-    testConfig.packageDescription,
-    testConfig.author,
+    defaultConfig.selectedTemplate,
+    defaultConfig.packageName,
+    defaultConfig.packageDescription,
+    defaultConfig.author,
   ]);
 }
 

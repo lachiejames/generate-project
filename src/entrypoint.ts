@@ -5,7 +5,6 @@ import { getConfigFromCli, runPostScaffoldSteps, runScaffold } from ".";
 async function run(): Promise<void> {
   const program = new Command("generate-project");
   program
-    .option("-p, --projectDir <path>", "Project directory")
     .option("-t, --selectedTemplate <string>", "Selected template")
     .option("-n, --packageName <string>", "Project name")
     .option("-d, --packageDescription <string>", "Project description")
