@@ -1,9 +1,9 @@
 import inquirer from "inquirer";
 
-import { defaultConfig } from "../src";
+import testConfig from "./testConfig";
 
 function setPromptMock(): void {
-  inquirer.prompt = jest.fn((_) => Promise.resolve(defaultConfig)) as unknown as never;
+  inquirer.prompt = jest.fn((_) => Promise.resolve(testConfig)) as unknown as never;
 }
 
 export default setPromptMock;
