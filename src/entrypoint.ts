@@ -1,21 +1,14 @@
-import { Command } from "commander";
+import path from "path";
 
-import { getConfigFromCli, runPostScaffoldSteps, runScaffold } from ".";
+import { getConfigFromCli, rootDir, runPostScaffoldSteps, runScaffold, setupCli } from ".";
 
 async function run(): Promise<void> {
-  const program = new Command("generate-project");
-  program
-    .option("-t, --selectedTemplate <string>", "Selected template")
-    .option("-n, --packageName <string>", "Project name")
-    .option("-d, --packageDescription <string>", "Project description")
-    .option("-a, --author <string>", "Project author")
-    .parse(process.argv);
-  const options = program.opts();
-
+  const options = setupCli();
   const config = await getConfigFromCli(options);
+  const projectDir = path.join(rootDir, config.packageName);
 
-  await runScaffold(config);
-  runPostScaffoldSteps(config);
+  await runScaffold(config, projectDir);
+  runPostScaffoldSteps(projectDir);
 }
 
 run();

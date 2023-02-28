@@ -11,7 +11,8 @@ import childProcess from "child_process";
 import fs from "fs-extra";
 import glob from "glob";
 
-import { defaultConfig, testDir } from "../testUtils";
+import { defaultConfig } from "../src";
+import { testDir } from "../testUtils";
 
 describe("ts-library", () => {
   afterAll(() => {

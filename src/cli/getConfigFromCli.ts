@@ -50,14 +50,16 @@ async function getProjectAuthor(): Promise<string> {
   return promptData.author;
 }
 
-async function getConfigFromCli(args: Record<string, string>): Promise<Config> {
-  console.log(args);
+async function getConfigFromCli(args: Record<string, string | undefined>): Promise<Config> {
+  console.clear();
+  console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
+
   const config: Config = JSON.parse(JSON.stringify(defaultConfig));
 
-  config.selectedTemplate = args.selectedTemplate ?? (await getSelectedTemplate());
-  config.packageName = args.packageName ?? (await getPackageName());
-  config.packageDescription = args.packageDescription ?? (await getProjectDescription());
-  config.author = args.author ?? (await getProjectAuthor());
+  config.selectedTemplate = args.selectedTemplate || (await getSelectedTemplate());
+  config.packageName = args.packageName || (await getPackageName());
+  config.packageDescription = args.packageDescription || (await getProjectDescription());
+  config.author = args.author || (await getProjectAuthor());
 
   return config;
 }
