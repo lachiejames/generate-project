@@ -19,6 +19,9 @@ npm install -g *.tgz
 mkdir tempTestDir
 cd tempTestDir
 
-# Run the project, answering all questions with empty string (to use defaults)
-# This is the only way to test the project in a non-interactive way (that I know of)
-yes "" | generate-project
+generate-project \
+    --projectDir pwd
+    --selectedTemplate "ts-library"
+    --packageName "my-new-package"
+    --packageDescription "Hot new JS framework" \
+    --author "Open Sourcerer" 
