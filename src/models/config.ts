@@ -3,6 +3,7 @@ interface Config {
   packageName: string;
   packageDescription: string;
   author: string;
+  projectDir: string;
 }
 
 export default Config;

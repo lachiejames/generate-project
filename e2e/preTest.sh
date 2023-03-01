@@ -24,3 +24,4 @@ generate-project \
     --packageName "my-new-package" \
     --packageDescription "Hot new JS framework" \
     --author "Open Sourcerer" 
+    --projectDir "$(pwd)/tempTestDir"

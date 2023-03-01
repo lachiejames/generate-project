@@ -60,6 +60,7 @@ async function getConfigFromCli(args: Record<string, string | undefined>): Promi
   config.packageName = args.packageName || (await getPackageName());
   config.packageDescription = args.packageDescription || (await getProjectDescription());
   config.author = args.author || (await getProjectAuthor());
+  config.projectDir = args.projectDir || process.cwd();
 
   return config;
 }

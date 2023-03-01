@@ -7,6 +7,7 @@ function setupCli(): Record<string, string | undefined> {
     .option("-n, --packageName <string>", "Project name")
     .option("-d, --packageDescription <string>", "Project description")
     .option("-a, --author <string>", "Project author")
+    .option("-p, --projectDir <string>", "Project location, defaults to $(pwd)")
     .parse(process.argv);
 
   return program.opts();
