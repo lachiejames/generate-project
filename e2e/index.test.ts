@@ -30,10 +30,6 @@ function execute(config: Config) {
 }
 
 describe("ts-library", () => {
-  beforeAll(() => {
-    execute({ ...testConfig, selectedTemplate: "ts-library" });
-  });
-
   afterAll(() => {
     // Clean up after ourselves
     childProcess.execSync(`rm -rf ${testDir}`);
@@ -41,6 +37,8 @@ describe("ts-library", () => {
   });
 
   it("produces the expected files", () => {
+    execute({ ...testConfig, selectedTemplate: "ts-library" });
+
     const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
 
     // Ensure src files were copied over
