@@ -5,10 +5,9 @@ import { Config, defaultConfig, listTemplates } from "..";
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
     name: "selectedTemplate",
-    type: "list",
+    type: "select",
     message: "Select a template: ",
     choices: listTemplates().map((template) => ({ title: template, value: template })),
-    initial: defaultConfig.selectedTemplate,
   });
 
   return promptData.selectedTemplate;
