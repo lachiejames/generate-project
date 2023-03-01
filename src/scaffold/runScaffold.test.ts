@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 
-import { cleanTestDir, setPromptMock, testDir } from "../../testUtils";
-import { runScaffold } from ".";
+import { cleanTestDir, setPromptMock, testConfig, testDir } from "../../testUtils";
+import runScaffold from "./runScaffold";
 
 describe("runScaffold", () => {
   beforeEach(() => {
@@ -16,7 +16,7 @@ describe("runScaffold", () => {
     it("creates files for the provided template", async () => {
       expect(() => fs.readdirSync(testDir)).toThrowError(`ENOENT: no such file or directory, scandir '${testDir}'`);
 
-      await runScaffold(testDir);
+      await runScaffold(testConfig);
 
       expect(fs.readdirSync(testDir)).toContain("package.json");
     });

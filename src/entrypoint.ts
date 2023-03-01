@@ -1,5 +1,16 @@
+import { getConfigFromCli, setupCli } from "./cli";
 import { runPostScaffoldSteps, runScaffold } from "./scaffold";
 
-const projectDir = process.cwd();
+async function run(): Promise<void> {
+  const options = setupCli();
+  const config = await getConfigFromCli(options);
 
-runScaffold(projectDir).then(() => runPostScaffoldSteps(projectDir));
+  await runScaffold(config);
+  runPostScaffoldSteps(config);
+}
+
+try {
+  run();
+} catch (e) {
+  console.error("😭 Failed to generate project 😭", e);
+}

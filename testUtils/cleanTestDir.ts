@@ -1,6 +1,6 @@
 import fs from "fs-extra";
 
-import { testDir } from ".";
+import testDir from "./testDir";
 
 function cleanTestDir(): void {
   fs.rmSync(testDir, { recursive: true, force: true });

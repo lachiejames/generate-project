@@ -1,7 +1,7 @@
 import fs from "fs-extra";
 import path from "path";
 
-import { rootDir } from ".";
+import rootDir from "./rootDir";
 
 function listTemplates(): string[] {
   const pathToTemplate = path.join(rootDir, "templates");
