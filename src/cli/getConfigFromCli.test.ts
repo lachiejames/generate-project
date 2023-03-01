@@ -1,5 +1,5 @@
-import { cleanTestDir, setPromptMock, testConfig } from "../../testUtils";
-import { getConfigFromCli } from "..";
+import { cleanTestDir, setPromptMock } from "../../testUtils";
+import { defaultConfig, getConfigFromCli } from "..";
 
 describe("getConfigFromCli", () => {
   beforeEach(() => {
@@ -27,6 +27,6 @@ describe("getConfigFromCli", () => {
     const emptyCliArgs = {};
     const results = await getConfigFromCli(emptyCliArgs);
 
-    expect(results).toEqual(testConfig);
+    expect(results).toEqual(defaultConfig);
   });
 });
