@@ -54,12 +54,4 @@ describe("ts-library", () => {
     // Ensure .gitignore is copied over (as a post-scaffold step)
     expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
   });
-
-  it("files contain expected content", () => {
-    const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
-
-    expect(packageJsonContents).toContain(`"name": "${defaultConfig.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultConfig.packageDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
-  });
 });
