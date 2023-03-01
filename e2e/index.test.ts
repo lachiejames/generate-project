@@ -30,12 +30,6 @@ function execute(config: Config) {
 }
 
 describe("ts-library", () => {
-  afterAll(() => {
-    // Clean up after ourselves
-    childProcess.execSync(`rm -rf ${testDir}`);
-    childProcess.execSync(`rm -rf *.tgz`);
-  });
-
   it("produces the expected files", () => {
     execute({ ...testConfig, selectedTemplate: "ts-library" });
 
