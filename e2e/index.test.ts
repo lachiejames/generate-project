@@ -19,9 +19,9 @@ function executeCLI(config: Config) {
   // Using shelljs.exec instead of childProcess.execSync because the latter doesn't seem to work with the interactive CLI
   shelljs.exec(
     `generate-project \
-    --selectedTemplate "${config.selectedTemplate}" \
-    --packageName "${config.packageName}" \
-    --packageDescription "${config.packageDescription}" \
+    --template "${config.template}" \
+    --name "${config.name}" \
+    --description "${config.description}" \
     --author "${config.author}" \
     --projectDir "${config.projectDir}"`,
   );
@@ -29,7 +29,7 @@ function executeCLI(config: Config) {
 
 describe("ts-library", () => {
   beforeAll(() => {
-    executeCLI({ ...testConfig, selectedTemplate: "ts-library" });
+    executeCLI({ ...testConfig, template: "ts-library" });
   });
 
   afterAll(() => {
@@ -58,8 +58,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultConfig.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultConfig.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultConfig.name}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultConfig.description}"`);
     expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
   });
 });

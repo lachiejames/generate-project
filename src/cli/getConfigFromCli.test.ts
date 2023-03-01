@@ -12,9 +12,9 @@ describe("getConfigFromCli", () => {
 
   it("when CLI args provided, then returns config with those values", async () => {
     const sillyCliArgs = {
-      selectedTemplate: "a",
-      packageName: "b",
-      packageDescription: "c",
+      template: "a",
+      name: "b",
+      description: "c",
       author: "d",
       projectDir: "e",
     };

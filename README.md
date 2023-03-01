@@ -68,34 +68,3 @@ Install code globally as an npm package then execute E2E tests:
 ```
 bash ./e2e/preTest.sh; yarn e2etest;
 ```
-
-# Okay I think I found the problem.  
-
-My postInstall steps are spawning child_process.execSync() calls, which means that executing the CLI tool is trying to run a child process inside of a child process, which won't work.
-
-What are my options?
-
-## Solution 1 - Use bash to run postinstall steps
-
-Won't have to worry about nested process this way
-
-How would one do this though?
-
-Pros:
-- No nested processes
-- Can easily run E2Es with different configs
-
-Cons:
-- Have to use bash, which may not run everywhere
-
-
-## Solution 2 - Ditch bash, put it all in the tests
-
-Why not?
-- Because the script keeps exiting immediately without waiting for the CLI command to finish
-- This is probably fixed with the bash stuff though
-
-What is the goal here?
-- Be able to run E2Es with a variety of configs (e.g. selectedTemplate=ts-docker)
-- Be able to run scripts with a variety of postinstall steps (e.g. docker build for ts-docker)
-

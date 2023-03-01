@@ -27,19 +27,19 @@ describe("fileHandler", () => {
   });
 
   describe("getTemplateFilePaths()", () => {
-    it("returns file paths under selectedTemplate", () => {
+    it("returns file paths under template", () => {
       const filePaths = getTemplateFilePaths("ts-library");
       expect(filePaths.length).toBeGreaterThan(0);
     });
 
-    it("does not return folder paths under selectedTemplate", () => {
+    it("does not return folder paths under template", () => {
       const filePaths = getTemplateFilePaths("ts-library");
       expect(filePaths).not.toContain("templates/ts-library/src");
     });
 
-    it("throws error when selectedTemplate does not exist", () => {
+    it("throws error when template does not exist", () => {
       expect(() => getTemplateFilePaths("fake-template-folder")).toThrowError(
-        "selectedTemplate not found: fake-template-folder",
+        "template not found: fake-template-folder",
       );
     });
   });
@@ -83,7 +83,7 @@ describe("fileHandler", () => {
       });
       const outputFileContents = fs.readFileSync(`${testDir}/package.json`, { encoding: "utf-8" });
 
-      expect(templateFileContents).toContain('"name": "{{ packageName }}"');
+      expect(templateFileContents).toContain('"name": "{{ name }}"');
       expect(outputFileContents).toContain('"name": "my-new-package"');
     });
   });

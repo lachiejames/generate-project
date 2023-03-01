@@ -11,5 +11,5 @@ async function run(): Promise<void> {
 try {
   run();
 } catch (e) {
-  console.error("😭 Failed to generate project 😭",e);
+  console.error("😭 Failed to generate project 😭", e);
 }

@@ -5,9 +5,9 @@ import testDir from "./testDir";
 
 function setPromptMock(): void {
   prompts.inject([
-    defaultConfig.selectedTemplate,
-    defaultConfig.packageName,
-    defaultConfig.packageDescription,
+    defaultConfig.template,
+    defaultConfig.name,
+    defaultConfig.description,
     defaultConfig.author,
     testDir,
   ]);

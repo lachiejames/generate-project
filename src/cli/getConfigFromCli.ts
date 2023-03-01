@@ -4,37 +4,37 @@ import { Config, defaultConfig, listTemplates } from "..";
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
-    name: "selectedTemplate",
+    name: "template",
     type: "select",
     message: "Select a template: ",
     choices: listTemplates().map((template) => ({ title: template, value: template })),
   });
 
-  return promptData.selectedTemplate;
+  return promptData.template;
 }
 
 async function getPackageName(): Promise<string> {
   const promptData = await prompts({
-    name: "packageName",
+    name: "name",
     type: "text",
     message: "Project name: ",
-    initial: defaultConfig.packageName,
-    validate: (packageName) => packageName.length > 0,
+    initial: defaultConfig.name,
+    validate: (name) => name.length > 0,
   });
 
-  return promptData.packageName;
+  return promptData.name;
 }
 
 async function getProjectDescription(): Promise<string> {
   const promptData = await prompts({
-    name: "packageDescription",
+    name: "description",
     type: "text",
     message: "Project description: ",
-    initial: defaultConfig.packageDescription,
-    validate: (packageDescription) => packageDescription.length > 0,
+    initial: defaultConfig.description,
+    validate: (description) => description.length > 0,
   });
 
-  return promptData.packageDescription;
+  return promptData.description;
 }
 
 async function getProjectAuthor(): Promise<string> {
@@ -55,9 +55,9 @@ async function getConfigFromCli(args: Record<string, string | undefined>): Promi
 
   const config: Config = JSON.parse(JSON.stringify(defaultConfig));
 
-  config.selectedTemplate = args.selectedTemplate || (await getSelectedTemplate());
-  config.packageName = args.packageName || (await getPackageName());
-  config.packageDescription = args.packageDescription || (await getProjectDescription());
+  config.template = args.template || (await getSelectedTemplate());
+  config.name = args.name || (await getPackageName());
+  config.description = args.description || (await getProjectDescription());
   config.author = args.author || (await getProjectAuthor());
   config.projectDir = args.projectDir || process.cwd();
 

@@ -1,6 +1,6 @@
-# {{ packageName }}
+# {{ name }}
 
-{{ packageDescription }}
+{{ description }}
 
 ## Local setup
 
