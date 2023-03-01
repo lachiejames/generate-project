@@ -8,38 +8,60 @@
  */
 
 import childProcess from "child_process";
-import shelljs from "shelljs";
+import fs from "fs-extra";
 import glob from "glob";
+import shelljs from "shelljs";
 
+import { Config, defaultConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
-it("produces the expected files", () => {
-  console.log("start CLI");
-
-  const x = shelljs.exec(
+function execute(config: Config) {
+  // Using shelljs.exec instead of childProcess.execSync because the latter doesn't seem to work with the interactive CLI
+  shelljs.exec(
     `generate-project \
-    --selectedTemplate "ts-library" \
-    --packageName "my-new-package" \
-    --packageDescription "Hot new JS framework" \
-    --author "Open Sourcerer" \
-    --projectDir ${testDir} \
+    --selectedTemplate ${config.selectedTemplate} \
+    --packageName ${config.packageName} \
+    --packageDescription ${config.packageDescription} \
+    --author ${config.author} \
+    --projectDir ${config.projectDir} \
     `,
+    { cwd: config.projectDir },
   );
+}
 
-  console.log("end CLI", x);
+describe("ts-library", () => {
+  beforeAll(() => {
+    execute({ ...testConfig, selectedTemplate: "ts-library" });
+  });
 
-  const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
+  afterAll(() => {
+    // Clean up after ourselves
+    childProcess.execSync(`rm -rf ${testDir}`);
+    childProcess.execSync(`rm -rf *.tgz`);
+  });
 
-  // Ensure src files were copied over
-  expect(outputFilePaths).toContain(`${testDir}/package.json`);
-  expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+  it("produces the expected files", () => {
+    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
 
-  // Ensure `yarn install` was successful
-  expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
+    // Ensure src files were copied over
+    expect(outputFilePaths).toContain(`${testDir}/package.json`);
+    expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
 
-  // Ensure `yarn build` was successful
-  expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+    // Ensure `yarn install` was successful
+    expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
 
-  // Ensure .gitignore is copied over (as a post-scaffold step)
-  expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
+    // Ensure `yarn build` was successful
+    expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+
+    // Ensure .gitignore is copied over (as a post-scaffold step)
+    expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
+  });
+
+  it("files contain expected content", () => {
+    const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
+
+    expect(packageJsonContents).toContain(`"name": "${defaultConfig.packageName}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultConfig.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
+  });
 });
