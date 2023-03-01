@@ -1,3 +1,10 @@
+# [1.1.0](https://github.com/lachiejames/generate-project/compare/v1.0.9...v1.1.0) (2023-03-01)
+
+
+### Features
+
+* support CLI args ([#11](https://github.com/lachiejames/generate-project/issues/11)) ([81c9c4a](https://github.com/lachiejames/generate-project/commit/81c9c4a9eb43d4b50f758c4731b4b3a1ad7fd1ee))
+
 ## [1.0.9](https://github.com/lachiejames/generate-project/compare/v1.0.8...v1.0.9) (2023-02-26)
 
 
