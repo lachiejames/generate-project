@@ -11,8 +11,7 @@ import childProcess from "child_process";
 import fs from "fs-extra";
 import glob from "glob";
 
-import { defaultConfig } from "../src";
-import { testDir } from "../testUtils";
+import { testConfig, testDir } from "../testUtils";
 
 describe("ts-library", () => {
   afterAll(() => {
@@ -41,8 +40,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultConfig.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultConfig.packageDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${testConfig.packageName}"`);
+    expect(packageJsonContents).toContain(`"description": "${testConfig.packageDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${testConfig.author}"`);
   });
 });
