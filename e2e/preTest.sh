@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-set timeout 360
 
 # Ensure global install is clean
 npm uninstall -g @lachiejames/generate-project

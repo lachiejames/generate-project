@@ -16,7 +16,9 @@ import { Config, defaultConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
 function executeCLI(config: Config) {
-  // Using shelljs.exec instead of childProcess.execSync because the latter doesn't seem to work with the interactive CLI
+  // Using shelljs.exec instead of childProcess.execSync here because I already use childProcess.execSync during
+  // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
+  // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
   shelljs.exec(
     `generate-project \
     --template "${config.template}" \
