@@ -14,14 +14,3 @@ yarn build
 # Install the project globally
 npm pack
 npm install -g *.tgz
-
-# Create a temporary test directory
-mkdir tempTestDir
-cd tempTestDir
-
-generate-project \
-    --selectedTemplate "ts-library" \
-    --packageName "my-new-package" \
-    --packageDescription "Hot new JS framework" \
-    --author "Open Sourcerer" \
-    --projectDir $(pwd)

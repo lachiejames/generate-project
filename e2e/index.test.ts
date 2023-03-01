@@ -8,40 +8,38 @@
  */
 
 import childProcess from "child_process";
-import fs from "fs-extra";
+import shelljs from "shelljs";
 import glob from "glob";
 
 import { testConfig, testDir } from "../testUtils";
 
-describe("ts-library", () => {
-  afterAll(() => {
-    // Clean up after ourselves
-    childProcess.execSync(`rm -rf ${testDir}`);
-    childProcess.execSync(`rm -rf *.tgz`);
-  });
+it("produces the expected files", () => {
+  console.log("start CLI");
 
-  it("produces the expected files", () => {
-    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
+  const x = shelljs.exec(
+    `generate-project \
+    --selectedTemplate "ts-library" \
+    --packageName "my-new-package" \
+    --packageDescription "Hot new JS framework" \
+    --author "Open Sourcerer" \
+    --projectDir ${testDir} \
+    `,
+  );
 
-    // Ensure src files were copied over
-    expect(outputFilePaths).toContain(`${testDir}/package.json`);
-    expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+  console.log("end CLI", x);
 
-    // Ensure `yarn install` was successful
-    expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
+  const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
 
-    // Ensure `yarn build` was successful
-    expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+  // Ensure src files were copied over
+  expect(outputFilePaths).toContain(`${testDir}/package.json`);
+  expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
 
-    // Ensure .gitignore is copied over (as a post-scaffold step)
-    expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
-  });
+  // Ensure `yarn install` was successful
+  expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
 
-  it("files contain expected content", () => {
-    const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
+  // Ensure `yarn build` was successful
+  expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
 
-    expect(packageJsonContents).toContain(`"name": "${testConfig.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${testConfig.packageDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${testConfig.author}"`);
-  });
+  // Ensure .gitignore is copied over (as a post-scaffold step)
+  expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
 });

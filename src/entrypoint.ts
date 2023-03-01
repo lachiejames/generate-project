@@ -8,4 +8,8 @@ async function run(): Promise<void> {
   runPostScaffoldSteps(config);
 }
 
-run();
+try {
+  run();
+} catch (e) {
+  console.error("😭 Failed to generate project 😭",e);
+}
