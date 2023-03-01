@@ -1,6 +1,6 @@
 import path from "path";
 
-import { rootDir } from ".";
+import rootDir from "./rootDir";
 
 function getOutputFilePath(template: string, templateFilePathFromTemplate: string, projectDirectory: string): string {
   const templateFilePathFromRoot = path.join(rootDir, "templates", template);

@@ -1,4 +1,4 @@
-import { listTemplates } from ".";
+import listTemplates from "./listTemplates";
 
 describe("getConfigFromCli", () => {
   it("listTemplates() returns a list of templates", () => {

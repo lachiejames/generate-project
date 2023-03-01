@@ -1,6 +1,7 @@
 import childProcess from "child_process";
 
-import { Config, insertGitIgnore } from "..";
+import { insertGitIgnore } from "../io";
+import { Config } from "../models";
 
 function runStep(config: Config, script: string, terminalText: string): void {
   console.log(`\n🔨 ${terminalText} 🔨`);

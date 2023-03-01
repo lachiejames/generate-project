@@ -1,9 +1,7 @@
 import fs from "fs-extra";
 
 import { cleanTestDir, testDir } from "../../testUtils";
-import {
-  insertGitIgnore,
-} from "..";
+import insertGitIgnore from "./insertGitIgnore";
 
 describe("insertGitIgnore", () => {
   afterEach(() => {

@@ -1,5 +1,6 @@
 import { cleanTestDir, setPromptMock } from "../../testUtils";
-import { defaultConfig, getConfigFromCli } from "..";
+import { defaultConfig } from "../constants";
+import getConfigFromCli from "./getConfigFromCli";
 
 describe("getConfigFromCli", () => {
   beforeEach(() => {

@@ -1,6 +1,8 @@
 import prompts from "prompts";
 
-import { Config, defaultConfig, listTemplates } from "..";
+import { defaultConfig } from "../constants";
+import { listTemplates } from "../io";
+import { Config } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({

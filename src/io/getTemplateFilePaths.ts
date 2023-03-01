@@ -1,7 +1,8 @@
 import glob from "glob";
 import path from "path";
 
-import { listTemplates, rootDir } from ".";
+import listTemplates from "./listTemplates";
+import rootDir from "./rootDir";
 
 function getTemplateFilePaths(template: string): string[] {
   const templateFilePathsGlob = path.join(rootDir, "templates", template, "**");

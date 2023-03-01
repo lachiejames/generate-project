@@ -1,4 +1,5 @@
-import { getConfigFromCli, runPostScaffoldSteps, runScaffold, setupCli } from ".";
+import { getConfigFromCli, setupCli } from "./cli";
+import { runPostScaffoldSteps, runScaffold } from "./scaffold";
 
 async function run(): Promise<void> {
   const options = setupCli();
