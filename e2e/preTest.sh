@@ -23,5 +23,5 @@ generate-project \
     --selectedTemplate "ts-library" \
     --packageName "my-new-package" \
     --packageDescription "Hot new JS framework" \
-    --author "Open Sourcerer" 
-    --projectDir "$(pwd)/tempTestDir"
+    --author "Open Sourcerer" \
+    --projectDir $(pwd)
