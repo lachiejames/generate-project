@@ -1,9 +1,16 @@
-import inquirer from "inquirer";
+import prompts from "prompts";
 
-import { defaultAnswers } from "../src";
+import { defaultConfig } from "../src";
+import testDir from "./testDir";
 
 function setPromptMock(): void {
-  inquirer.prompt = jest.fn((_) => Promise.resolve(defaultAnswers)) as unknown as never;
+  prompts.inject([
+    defaultConfig.template,
+    defaultConfig.name,
+    defaultConfig.description,
+    defaultConfig.author,
+    testDir,
+  ]);
 }
 
 export default setPromptMock;

@@ -1,8 +1,9 @@
 interface Config {
-  selectedTemplate: string;
-  packageName: string;
-  packageDescription: string;
+  template: string;
+  name: string;
+  description: string;
   author: string;
+  projectDir: string;
 }
 
 export default Config;

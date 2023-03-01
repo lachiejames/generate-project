@@ -1,5 +1,4 @@
 #!/usr/bin/bash
-set timeout 360
 
 # Ensure global install is clean
 npm uninstall -g @lachiejames/generate-project
@@ -14,7 +13,3 @@ yarn build
 # Install the project globally
 npm pack
 npm install -g *.tgz
-
-# Create a temporary test directory
-mkdir tempTestDir
-cd tempTestDir

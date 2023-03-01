@@ -10,11 +10,30 @@
 import childProcess from "child_process";
 import fs from "fs-extra";
 import glob from "glob";
+import shelljs from "shelljs";
 
-import { defaultAnswers } from "../../src";
-import { testDir } from "../../testUtils";
+import { Config, defaultConfig } from "../src";
+import { testConfig, testDir } from "../testUtils";
+
+function executeCLI(config: Config) {
+  // Using shelljs.exec instead of childProcess.execSync here because I already use childProcess.execSync during
+  // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
+  // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
+  shelljs.exec(
+    `generate-project \
+    --template "${config.template}" \
+    --name "${config.name}" \
+    --description "${config.description}" \
+    --author "${config.author}" \
+    --projectDir "${config.projectDir}"`,
+  );
+}
 
 describe("ts-library", () => {
+  beforeAll(() => {
+    executeCLI({ ...testConfig, template: "ts-library" });
+  });
+
   afterAll(() => {
     // Clean up after ourselves
     childProcess.execSync(`rm -rf ${testDir}`);
@@ -41,8 +60,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultAnswers.packageName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultAnswers.packageDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultAnswers.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultConfig.name}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultConfig.description}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
   });
 });
