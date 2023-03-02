@@ -1,5 +1,7 @@
+import GPTemplateName from "./gpTemplateName";
+
 interface GPConfig {
-  templateName: string;
+  templateName: GPTemplateName;
   name: string;
   description: string;
   author: string;

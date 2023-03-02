@@ -1,7 +1,8 @@
 import GPConfig from "./gpConfig";
+import GPTemplateName from "./gpTemplateName";
 
 interface GPTemplate {
-  name: string;
+  name: GPTemplateName;
   displayName: string;
   description: string;
   runPostScaffoldSteps: (gpConfig: GPConfig) => void;

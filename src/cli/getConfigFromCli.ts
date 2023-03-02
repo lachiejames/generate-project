@@ -1,9 +1,9 @@
 import prompts from "prompts";
 
 import { defaultGPConfig, defaultGPTemplates } from "../constants";
-import { GPConfig } from "../models";
+import { GPConfig, GPTemplateName } from "../models";
 
-async function getSelectedTemplate(): Promise<string> {
+async function getSelectedTemplate(): Promise<GPTemplateName> {
   const promptData = await prompts({
     name: "templateName",
     type: "select",
@@ -54,7 +54,7 @@ async function getProjectAuthor(): Promise<string> {
   return promptData.author;
 }
 
-async function getConfigFromCli(args: Record<string, string | undefined>): Promise<GPConfig> {
+async function getConfigFromCli(args: Partial<GPConfig>): Promise<GPConfig> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 

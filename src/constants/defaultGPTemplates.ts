@@ -1,9 +1,9 @@
-import { GPTemplate } from "../models";
+import { GPTemplate, GPTemplateName } from "../models";
 import { setupDocker, setupGit, setupYarn } from "../scaffold";
 
 const defaultGPTemplates: GPTemplate[] = [
   {
-    name: "ts-library",
+    name: GPTemplateName.TS_LIBRARY,
     displayName: "TypeScript Node library",
     description: `
     A Node library written in TypeScript.
@@ -18,7 +18,7 @@ const defaultGPTemplates: GPTemplate[] = [
     },
   },
   {
-    name: "ts-docker",
+    name: GPTemplateName.TS_DOCKER,
     displayName: "TypeScript Node library (with Docker)",
     description: `
       A Node library written in TypeScript.

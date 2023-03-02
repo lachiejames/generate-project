@@ -1,6 +1,8 @@
 import commander from "commander";
 
-function setupCli(): Record<string, string | undefined> {
+import { GPConfig } from "../models";
+
+function setupCli(): Partial<GPConfig> {
   const program = new commander.Command("generate-project");
   program
     .option("-t, --templateName <string>", "Selected template")

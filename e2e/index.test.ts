@@ -12,7 +12,7 @@ import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { defaultGPConfig, GPConfig } from "../src";
+import { defaultGPConfig, GPConfig, GPTemplateName } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
 function executeCLI(gpConfig: GPConfig) {
@@ -31,7 +31,7 @@ function executeCLI(gpConfig: GPConfig) {
 
 describe("ts-library", () => {
   beforeAll(() => {
-    executeCLI({ ...testConfig, templateName: "ts-library" });
+    executeCLI({ ...testConfig, templateName: GPTemplateName.TS_LIBRARY });
   });
 
   afterAll(() => {
@@ -46,6 +46,44 @@ describe("ts-library", () => {
     // Ensure src files were copied over
     expect(outputFilePaths).toContain(`${testDir}/package.json`);
     expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+
+    // Ensure `yarn install` was successful
+    expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
+
+    // Ensure `yarn build` was successful
+    expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+
+    // Ensure .gitignore is copied over (as a post-scaffold step)
+    expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
+  });
+
+  it("files contain expected content", () => {
+    const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
+
+    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
+  });
+});
+
+describe("ts-docker", () => {
+  beforeAll(() => {
+    executeCLI({ ...testConfig, templateName: GPTemplateName.TS_DOCKER });
+  });
+
+  afterAll(() => {
+    // Clean up after ourselves
+    childProcess.execSync(`rm -rf ${testDir}`);
+    childProcess.execSync(`rm -rf *.tgz`);
+  });
+
+  it("produces the expected files", () => {
+    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
+
+    // Ensure src files were copied over
+    expect(outputFilePaths).toContain(`${testDir}/package.json`);
+    expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+    expect(outputFilePaths).toContain(`${testDir}/Dockerfile`);
 
     // Ensure `yarn install` was successful
     expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
