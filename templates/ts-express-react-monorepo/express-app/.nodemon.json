@@ -1,0 +1,12 @@
+{
+  "ignore": [
+    "dist/",
+    "node_modules/",
+    "src/**/*.test.ts"
+  ],
+  "watch": ["src/"],
+  "env": {
+    "NODE_ENV": "local"
+  },
+  "ext": "js,jsx,json,ts,tsx,"
+}
