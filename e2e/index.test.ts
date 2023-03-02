@@ -12,7 +12,7 @@ import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { defaultGPConfig, GPConfig, GPTemplateName } from "../src";
+import { GPConfig, GPTemplateName } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
 function executeCLI(gpConfig: GPConfig) {
@@ -35,6 +35,9 @@ describe("ts-library", () => {
   });
 
   afterAll(() => {
+    // Remove docker image
+    childProcess.execSync(`docker rmi ${testConfig.projectName}`);
+
     // Clean up after ourselves
     childProcess.execSync(`rm -rf ${testDir}`);
     childProcess.execSync(`rm -rf *.tgz`);
@@ -60,9 +63,9 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.projectName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.projectDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.projectAuthor}"`);
+    expect(packageJsonContents).toContain(`"name": "${testConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${testConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${testConfig.projectAuthor}"`);
   });
 });
 
@@ -98,8 +101,13 @@ describe("ts-docker", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.projectName}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.projectDescription}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.projectAuthor}"`);
+    expect(packageJsonContents).toContain(`"name": "${testConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${testConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${testConfig.projectAuthor}"`);
+  });
+
+  it("expected docker container produced", () => {
+    const output = shelljs.exec("docker images");
+    expect(output).toContain(`${testConfig.projectName}`);
   });
 });
