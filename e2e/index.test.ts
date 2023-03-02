@@ -7,7 +7,6 @@
  * but that doesn't seem to work with the interactive CLI.  It just skips over the prompts.  So I'm using bash instead.
  */
 
-import childProcess from "child_process";
 import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
@@ -32,15 +31,6 @@ function executeCLI(gpConfig: GPConfig) {
 describe("ts-library", () => {
   beforeAll(() => {
     executeCLI({ ...testConfig, templateName: GPTemplateName.TS_LIBRARY });
-  });
-
-  afterAll(() => {
-    // Remove docker image
-    childProcess.execSync(`docker rmi ${testConfig.projectName}`);
-
-    // Clean up after ourselves
-    childProcess.execSync(`rm -rf ${testDir}`);
-    childProcess.execSync(`rm -rf *.tgz`);
   });
 
   it("produces the expected files", () => {
@@ -74,12 +64,6 @@ describe("ts-docker", () => {
     executeCLI({ ...testConfig, templateName: GPTemplateName.TS_DOCKER });
   });
 
-  afterAll(() => {
-    // Clean up after ourselves
-    childProcess.execSync(`rm -rf ${testDir}`);
-    childProcess.execSync(`rm -rf *.tgz`);
-  });
-
   it("produces the expected files", () => {
     const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
 
@@ -108,6 +92,6 @@ describe("ts-docker", () => {
 
   it("expected docker container produced", () => {
     const output = shelljs.exec("docker images");
-    expect(output).toContain(`${testConfig.projectName}`);
+    expect(output).toContain(testConfig.projectName);
   });
 });
