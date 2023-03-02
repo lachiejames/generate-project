@@ -33,6 +33,21 @@ const defaultGPTemplates: GPTemplate[] = [
       setupDocker(gpConfig.projectName, gpConfig.projectDir);
     },
   },
+  {
+    name: GPTemplateName.TS_EXPRESS_REACT_MONOREPO,
+    displayName: "TypeScript Express backend with React frontend (monorepo)",
+    description: `
+      A Node library written in TypeScript.
+      This template is a good starting point for building a library that can be published to NPM.
+      It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
+
+      ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
+  `,
+    runPostScaffoldSteps: (gpConfig) => {
+      setupGit(gpConfig.projectDir);
+      setupYarn(gpConfig.projectDir);
+    },
+  },
 ];
 
 export default defaultGPTemplates;
