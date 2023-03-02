@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ["**/dist/**"],
+  ignorePatterns: ["**/coverage/**", "**/dist/**", "**/node_modules/**", "**/tempTestDir/**"],
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint", "unused-imports", "import", "simple-import-sort"],
   extends: [

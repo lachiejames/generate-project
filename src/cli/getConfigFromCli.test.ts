@@ -1,5 +1,6 @@
 import { cleanTestDir, setPromptMock } from "../../testUtils";
 import { defaultGPConfig } from "../constants";
+import { GPConfig, GPTemplateName } from "../models";
 import getConfigFromCli from "./getConfigFromCli";
 
 describe("getConfigFromCli", () => {
@@ -12,8 +13,8 @@ describe("getConfigFromCli", () => {
   });
 
   it("when CLI args provided, then returns gpConfig with those values", async () => {
-    const sillyCliArgs: any = {
-      templateName: "a",
+    const sillyCliArgs: Partial<GPConfig> = {
+      templateName: "a" as GPTemplateName,
       projectName: "b",
       projectDescription: "c",
       projectAuthor: "d",
@@ -25,7 +26,7 @@ describe("getConfigFromCli", () => {
   });
 
   it("when no CLI args provided, then returns gpConfig with default values", async () => {
-    const emptyCliArgs = {};
+    const emptyCliArgs: Partial<GPConfig> = {};
     const results = await getConfigFromCli(emptyCliArgs);
 
     expect(results).toEqual(defaultGPConfig);
