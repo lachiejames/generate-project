@@ -11,7 +11,13 @@ function runStep(config: GPConfig, script: string, terminalText: string): void {
 const defaultGPTemplates: GPTemplate[] = [
   {
     name: "TypeScript Node library",
-    description: `A TypeScript library for Node.js, with Jest unit tests, Prettier formatting, and ESLint linting.`,
+    description: `
+    A Node library written in TypeScript.
+    This template is a good starting point for building a library that can be published to NPM.
+    It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.  
+
+    ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
+`,
     value: "ts-library",
     postScaffoldSteps: (config) => {
       insertGitIgnore(config.projectDir);
@@ -26,8 +32,14 @@ const defaultGPTemplates: GPTemplate[] = [
     },
   },
   {
-    name: "Node + TypeScript + Docker",
-    description: `Node + TypeScript + Docker`,
+    name: "TypeScript Node library (with Docker)",
+    description: `
+    A Node library written in TypeScript.
+    This template is a good starting point for building a library that can be published to NPM.
+    It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.  
+
+    ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
+`,
     value: "ts-node-docker",
     postScaffoldSteps: (config) => {
       insertGitIgnore(config.projectDir);
