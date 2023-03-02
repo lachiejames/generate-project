@@ -1,3 +1,10 @@
+# [1.2.0](https://github.com/lachiejames/generate-project/compare/v1.1.1...v1.2.0) (2023-03-02)
+
+
+### Features
+
+* add ts-docker template ([#14](https://github.com/lachiejames/generate-project/issues/14)) ([a712a89](https://github.com/lachiejames/generate-project/commit/a712a89b3c8392ae1c0d74022e120c4295fa07a4))
+
 ## [1.1.1](https://github.com/lachiejames/generate-project/compare/v1.1.0...v1.1.1) (2023-03-02)
 
 
