@@ -1,7 +1,6 @@
 import prompts from "prompts";
 
-import { defaultConfig } from "../constants";
-import { listTemplates } from "../io";
+import { defaultConfig, templates } from "../constants";
 import { Config } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
@@ -9,7 +8,11 @@ async function getSelectedTemplate(): Promise<string> {
     name: "template",
     type: "select",
     message: "Select a template: ",
-    choices: listTemplates().map((template) => ({ title: template, value: template })),
+    choices: templates.map((template) => ({
+      title: template.name,
+      value: template.value,
+      description: template.description,
+    })),
   });
 
   return promptData.template;

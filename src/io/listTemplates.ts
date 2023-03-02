@@ -1,11 +1,7 @@
-import fs from "fs-extra";
-import path from "path";
-
-import rootDir from "./rootDir";
+import { templates } from "../constants";
 
 function listTemplates(): string[] {
-  const pathToTemplate = path.join(rootDir, "templates");
-  return fs.readdirSync(pathToTemplate);
+  return templates.map((template) => template.value);
 }
 
 export default listTemplates;
