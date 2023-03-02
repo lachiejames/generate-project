@@ -3,7 +3,8 @@ import { setupGit, setupYarn } from "../scaffold";
 
 const defaultGPTemplates: GPTemplate[] = [
   {
-    name: "TypeScript Node library",
+    name: "ts-library",
+    displayName: "TypeScript Node library",
     description: `
     A Node library written in TypeScript.
     This template is a good starting point for building a library that can be published to NPM.
@@ -11,7 +12,6 @@ const defaultGPTemplates: GPTemplate[] = [
 
     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
-    value: "ts-library",
     runPostScaffoldSteps: (gpConfig) => {
       setupGit(gpConfig.projectDir);
       setupYarn(gpConfig.projectDir);
@@ -19,6 +19,7 @@ const defaultGPTemplates: GPTemplate[] = [
   },
   // TODO: add this library
   // {
+  //   value: "ts-node-docker",
   //   name: "TypeScript Node library (with Docker)",
   //   description: `
   //     A Node library written in TypeScript.
@@ -27,7 +28,6 @@ const defaultGPTemplates: GPTemplate[] = [
 
   //     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
   // `,
-  //   value: "ts-node-docker",
   //   runPostScaffoldSteps: (gpConfig) => {
   //     setupGit(gpConfig.projectDir);
   //     setupYarn(gpConfig.projectDir);

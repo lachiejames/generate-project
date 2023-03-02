@@ -9,8 +9,8 @@ async function getSelectedTemplate(): Promise<string> {
     type: "select",
     message: "Select a template: ",
     choices: defaultGPTemplates.map((template) => ({
-      title: template.name,
-      value: template.value,
+      value: template.name,
+      title: template.displayName,
       description: template.description,
     })),
   });
