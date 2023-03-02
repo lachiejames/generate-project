@@ -1,6 +1,6 @@
 module.exports = {
   root: true,
-  ignorePatterns: ["**/coverage/**", "**/dist/**", "**/node_modules/**", "**/tempTestDir/**"],
+  ignorePatterns: ["**/dist/**"],
   parser: "@typescript-eslint/parser",
   plugins: ["@typescript-eslint", "unused-imports", "import", "simple-import-sort"],
   extends: [
@@ -19,12 +19,5 @@ module.exports = {
     "simple-import-sort/imports": "warn",
     "simple-import-sort/exports": "warn",
     "func-style": ["warn", "declaration"],
-    "import/no-useless-path-segments": [
-      "warn",
-      {
-        noUselessIndex: true,
-        commonjs: true,
-      },
-    ],
   },
 };

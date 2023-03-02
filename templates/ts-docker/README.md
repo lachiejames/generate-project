@@ -6,6 +6,8 @@
 
 Clone this project and open a terminal in the root directory.
 
+### Yarn
+
 Install dependencies:
 
 ```
@@ -28,4 +30,18 @@ Run the project:
 
 ```
 yarn start
+```
+
+### Docker
+
+Build the docker image
+
+```
+docker build -t {{ projectName }} .
+```
+
+Run the docker image
+
+```
+docker run {{ projectName }}
 ```

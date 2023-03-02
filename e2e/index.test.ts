@@ -7,12 +7,11 @@
  * but that doesn't seem to work with the interactive CLI.  It just skips over the prompts.  So I'm using bash instead.
  */
 
-import childProcess from "child_process";
 import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { defaultGPConfig, GPConfig } from "../src";
+import { GPConfig, GPTemplateName } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
 function executeCLI(gpConfig: GPConfig) {
@@ -22,22 +21,16 @@ function executeCLI(gpConfig: GPConfig) {
   shelljs.exec(
     `generate-project \
     --templateName "${gpConfig.templateName}" \
-    --name "${gpConfig.name}" \
-    --description "${gpConfig.description}" \
-    --author "${gpConfig.author}" \
+    --projectName "${gpConfig.projectName}" \
+    --projectDescription "${gpConfig.projectDescription}" \
+    --projectAuthor "${gpConfig.projectAuthor}" \
     --projectDir "${gpConfig.projectDir}"`,
   );
 }
 
 describe("ts-library", () => {
   beforeAll(() => {
-    executeCLI({ ...testConfig, templateName: "ts-library" });
-  });
-
-  afterAll(() => {
-    // Clean up after ourselves
-    childProcess.execSync(`rm -rf ${testDir}`);
-    childProcess.execSync(`rm -rf *.tgz`);
+    executeCLI({ ...testConfig, templateName: GPTemplateName.TS_LIBRARY });
   });
 
   it("produces the expected files", () => {
@@ -60,8 +53,45 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${testConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${testConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${testConfig.projectAuthor}"`);
+  });
+});
+
+describe("ts-docker", () => {
+  beforeAll(() => {
+    executeCLI({ ...testConfig, templateName: GPTemplateName.TS_DOCKER });
+  });
+
+  it("produces the expected files", () => {
+    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
+
+    // Ensure src files were copied over
+    expect(outputFilePaths).toContain(`${testDir}/package.json`);
+    expect(outputFilePaths).toContain(`${testDir}/src/index.ts`);
+    expect(outputFilePaths).toContain(`${testDir}/Dockerfile`);
+
+    // Ensure `yarn install` was successful
+    expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
+
+    // Ensure `yarn build` was successful
+    expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
+
+    // Ensure .gitignore is copied over (as a post-scaffold step)
+    expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
+  });
+
+  it("files contain expected content", () => {
+    const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
+
+    expect(packageJsonContents).toContain(`"name": "${testConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${testConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${testConfig.projectAuthor}"`);
+  });
+
+  it("expected docker container produced", () => {
+    const output = shelljs.exec("docker images");
+    expect(output.stdout).toContain(testConfig.projectName);
   });
 });
