@@ -1,4 +1,4 @@
-import GPConfig from "./GPConfig";
+import GPConfig from "./gpConfig";
 
 interface GPTemplate {
   name: string;

@@ -1,2 +1,2 @@
-export { default as GPConfig } from "./GPConfig";
-export { default as GPTemplate } from "./GPTemplate";
+export { default as GPConfig } from "./gpConfig";
+export { default as GPTemplate } from "./gpTemplate";
