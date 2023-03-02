@@ -86,7 +86,7 @@ describe("fileHandler", () => {
       });
       const outputFileContents = fs.readFileSync(`${testDir}/package.json`, { encoding: "utf-8" });
 
-      expect(templateFileContents).toContain('"name": "{{ name }}"');
+      expect(templateFileContents).toContain('"name": "{{ projectName }}"');
       expect(outputFileContents).toContain('"name": "my-new-package"');
     });
   });

@@ -2,9 +2,9 @@ import GPTemplateName from "./gpTemplateName";
 
 interface GPConfig {
   templateName: GPTemplateName;
-  name: string;
-  description: string;
-  author: string;
+  projectName: string;
+  projectDescription: string;
+  projectAuthor: string;
   projectDir: string;
 }
 

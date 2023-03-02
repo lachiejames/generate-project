@@ -30,7 +30,7 @@ const defaultGPTemplates: GPTemplate[] = [
     runPostScaffoldSteps: (gpConfig) => {
       setupGit(gpConfig.projectDir);
       setupYarn(gpConfig.projectDir);
-      setupDocker(gpConfig.name, gpConfig.projectDir);
+      setupDocker(gpConfig.projectName, gpConfig.projectDir);
     },
   },
 ];

@@ -14,9 +14,9 @@ describe("getConfigFromCli", () => {
   it("when CLI args provided, then returns gpConfig with those values", async () => {
     const sillyCliArgs: any = {
       templateName: "a",
-      name: "b",
-      description: "c",
-      author: "d",
+      projectName: "b",
+      projectDescription: "c",
+      projectAuthor: "d",
       projectDir: "e",
     };
     const results = await getConfigFromCli(sillyCliArgs);

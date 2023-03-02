@@ -22,9 +22,9 @@ function executeCLI(gpConfig: GPConfig) {
   shelljs.exec(
     `generate-project \
     --templateName "${gpConfig.templateName}" \
-    --name "${gpConfig.name}" \
-    --description "${gpConfig.description}" \
-    --author "${gpConfig.author}" \
+    --projectName "${gpConfig.projectName}" \
+    --projectDescription "${gpConfig.projectDescription}" \
+    --projectAuthor "${gpConfig.projectAuthor}" \
     --projectDir "${gpConfig.projectDir}"`,
   );
 }
@@ -60,9 +60,9 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.projectAuthor}"`);
   });
 });
 
@@ -98,8 +98,8 @@ describe("ts-docker", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.projectName}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.projectDescription}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.projectAuthor}"`);
   });
 });

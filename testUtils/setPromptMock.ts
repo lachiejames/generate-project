@@ -6,9 +6,9 @@ import testDir from "./testDir";
 function setPromptMock(): void {
   prompts.inject([
     defaultGPConfig.templateName,
-    defaultGPConfig.name,
-    defaultGPConfig.description,
-    defaultGPConfig.author,
+    defaultGPConfig.projectName,
+    defaultGPConfig.projectDescription,
+    defaultGPConfig.projectAuthor,
     testDir,
   ]);
 }
