@@ -92,6 +92,6 @@ describe("ts-docker", () => {
 
   it("expected docker container produced", () => {
     const output = shelljs.exec("docker images");
-    expect(output).toContain(testConfig.projectName);
+    expect(output.stdout).toContain(testConfig.projectName);
   });
 });
