@@ -1,3 +1,10 @@
+## [1.1.1](https://github.com/lachiejames/generate-project/compare/v1.1.0...v1.1.1) (2023-03-02)
+
+
+### Bug Fixes
+
+* add template models ([#13](https://github.com/lachiejames/generate-project/issues/13)) ([e663f0a](https://github.com/lachiejames/generate-project/commit/e663f0a1db962310111b5dcd122195d70a9516b1))
+
 # [1.1.0](https://github.com/lachiejames/generate-project/compare/v1.0.9...v1.1.0) (2023-03-01)
 
 
