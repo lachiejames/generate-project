@@ -1,6 +1,7 @@
 import runStep from "./runStep";
 
 function setupYarn(projectDir: string) {
+  runStep("npm install -g yarn", "Installing yarn globally with `npm install -g yarn`", projectDir);
   runStep("yarn install", "Installing dependencies with `yarn install`", projectDir);
   runStep("yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`", projectDir);
   runStep("yarn format", "Making files pretty with `yarn format`", projectDir);
