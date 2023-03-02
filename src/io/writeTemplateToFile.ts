@@ -1,10 +1,10 @@
 import fs from "fs-extra";
 import nunjucks from "nunjucks";
 
-import { Config } from "../models";
+import { GPConfig } from "../models";
 
-function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, config: Config): void {
-  const outputString = template.render(config);
+function writeTemplateToFile(nunjucksTemplate: nunjucks.Template, outputFilePath: string, gpConfig: GPConfig): void {
+  const outputString = nunjucksTemplate.render(gpConfig);
   fs.outputFileSync(outputFilePath, outputString);
 }
 

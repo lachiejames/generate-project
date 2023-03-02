@@ -1,9 +1,9 @@
-interface Config {
-  template: string;
+interface GPConfig {
+  templateName: string;
   name: string;
   description: string;
   author: string;
   projectDir: string;
 }
 
-export default Config;
+export default GPConfig;

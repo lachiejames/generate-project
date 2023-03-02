@@ -12,26 +12,26 @@ import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { Config, defaultConfig } from "../src";
+import { defaultGPConfig, GPConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
-function executeCLI(config: Config) {
+function executeCLI(gpConfig: GPConfig) {
   // Using shelljs.exec instead of childProcess.execSync here because I already use childProcess.execSync during
   // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
   // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
   shelljs.exec(
     `generate-project \
-    --template "${config.template}" \
-    --name "${config.name}" \
-    --description "${config.description}" \
-    --author "${config.author}" \
-    --projectDir "${config.projectDir}"`,
+    --templateName "${gpConfig.templateName}" \
+    --name "${gpConfig.name}" \
+    --description "${gpConfig.description}" \
+    --author "${gpConfig.author}" \
+    --projectDir "${gpConfig.projectDir}"`,
   );
 }
 
 describe("ts-library", () => {
   beforeAll(() => {
-    executeCLI({ ...testConfig, template: "ts-library" });
+    executeCLI({ ...testConfig, templateName: "ts-library" });
   });
 
   afterAll(() => {
@@ -60,8 +60,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultConfig.name}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultConfig.description}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
   });
 });

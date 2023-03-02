@@ -1,18 +1,21 @@
 import prompts from "prompts";
 
-import { defaultConfig } from "../constants";
-import { listTemplates } from "../io";
-import { Config } from "../models";
+import { defaultGPConfig, defaultGPTemplates } from "../constants";
+import { GPConfig } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
-    name: "template",
+    name: "templateName",
     type: "select",
     message: "Select a template: ",
-    choices: listTemplates().map((template) => ({ title: template, value: template })),
+    choices: defaultGPTemplates.map((template) => ({
+      value: template.name,
+      title: template.displayName,
+      description: template.description,
+    })),
   });
 
-  return promptData.template;
+  return promptData.templateName;
 }
 
 async function getPackageName(): Promise<string> {
@@ -20,7 +23,7 @@ async function getPackageName(): Promise<string> {
     name: "name",
     type: "text",
     message: "Project name: ",
-    initial: defaultConfig.name,
+    initial: defaultGPConfig.name,
     validate: (name) => name.length > 0,
   });
 
@@ -32,7 +35,7 @@ async function getProjectDescription(): Promise<string> {
     name: "description",
     type: "text",
     message: "Project description: ",
-    initial: defaultConfig.description,
+    initial: defaultGPConfig.description,
     validate: (description) => description.length > 0,
   });
 
@@ -44,26 +47,26 @@ async function getProjectAuthor(): Promise<string> {
     name: "author",
     type: "text",
     message: "Project author: ",
-    initial: defaultConfig.author,
+    initial: defaultGPConfig.author,
     validate: (author) => author.length > 0,
   });
 
   return promptData.author;
 }
 
-async function getConfigFromCli(args: Record<string, string | undefined>): Promise<Config> {
+async function getConfigFromCli(args: Record<string, string | undefined>): Promise<GPConfig> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  const config: Config = JSON.parse(JSON.stringify(defaultConfig));
+  const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-  config.template = args.template || (await getSelectedTemplate());
-  config.name = args.name || (await getPackageName());
-  config.description = args.description || (await getProjectDescription());
-  config.author = args.author || (await getProjectAuthor());
-  config.projectDir = args.projectDir || process.cwd();
+  gpConfig.templateName = args.templateName || (await getSelectedTemplate());
+  gpConfig.name = args.name || (await getPackageName());
+  gpConfig.description = args.description || (await getProjectDescription());
+  gpConfig.author = args.author || (await getProjectAuthor());
+  gpConfig.projectDir = args.projectDir || process.cwd();
 
-  return config;
+  return gpConfig;
 }
 
 export default getConfigFromCli;
