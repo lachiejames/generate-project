@@ -1,3 +1,10 @@
+## [1.2.1](https://github.com/lachiejames/generate-project/compare/v1.2.0...v1.2.1) (2023-03-02)
+
+
+### Bug Fixes
+
+* add GHA templates ([#15](https://github.com/lachiejames/generate-project/issues/15)) ([4d41b2d](https://github.com/lachiejames/generate-project/commit/4d41b2d6d64e3b1dcdfa8a2c50ebe70db4157a80))
+
 # [1.2.0](https://github.com/lachiejames/generate-project/compare/v1.1.1...v1.2.0) (2023-03-02)
 
 
