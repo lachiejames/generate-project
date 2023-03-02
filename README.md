@@ -63,8 +63,8 @@ Run the project:
 yarn start
 ```
 
-Install code globally as an npm package then execute E2E tests:
+This command both installs the package globally and then executes E2E tests:
 
 ```
-bash ./e2e/preTest.sh; yarn e2etest;
+yarn e2etest;
 ```
