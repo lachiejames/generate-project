@@ -13,16 +13,16 @@ const defaultGPTemplates: GPTemplate[] = [
     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
     value: "ts-library",
-    postScaffoldSteps: (config) => {
+    runPostScaffoldSteps: (config) => {
       insertGitIgnore(config.projectDir);
 
-      runStep(config, "git init", "Initialising git with `git init`");
-      runStep(config, "yarn install", "Installing dependencies with `yarn install`");
-      runStep(config, "yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`");
-      runStep(config, "yarn format", "Making files pretty with `yarn format`");
-      runStep(config, "yarn build", "Compiling TS->JS with `yarn build`");
-      runStep(config, "yarn test", "Running unit tests with `yarn test`");
-      runStep(config, "yarn start", "Running JS with `yarn start`");
+      runStep("git init", "Initialising git with `git init`", config.projectDir);
+      runStep("yarn install", "Installing dependencies with `yarn install`", config.projectDir);
+      runStep("yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`", config.projectDir);
+      runStep("yarn format", "Making files pretty with `yarn format`", config.projectDir);
+      runStep("yarn build", "Compiling TS->JS with `yarn build`", config.projectDir);
+      runStep("yarn test", "Running unit tests with `yarn test`", config.projectDir);
+      runStep("yarn start", "Running JS with `yarn start`", config.projectDir);
     },
   },
   {
@@ -35,19 +35,19 @@ const defaultGPTemplates: GPTemplate[] = [
     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
     value: "ts-node-docker",
-    postScaffoldSteps: (config) => {
+    runPostScaffoldSteps: (config) => {
       insertGitIgnore(config.projectDir);
 
-      runStep(config, "git init", "Initialising git with `git init`");
-      runStep(config, "yarn install", "Installing dependencies with `yarn install`");
-      runStep(config, "yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`");
-      runStep(config, "yarn format", "Making files pretty with `yarn format`");
-      runStep(config, "yarn build", "Compiling TS->JS with `yarn build`");
-      runStep(config, "yarn test", "Running unit tests with `yarn test`");
-      runStep(config, "yarn start", "Running JS with `yarn start`");
+      runStep("git init", "Initialising git with `git init`", config.projectDir);
+      runStep("yarn install", "Installing dependencies with `yarn install`", config.projectDir);
+      runStep("yarn upgrade --latest", "Upgrading dependencies with `yarn upgrade --latest`", config.projectDir);
+      runStep("yarn format", "Making files pretty with `yarn format`", config.projectDir);
+      runStep("yarn build", "Compiling TS->JS with `yarn build`", config.projectDir);
+      runStep("yarn test", "Running unit tests with `yarn test`", config.projectDir);
+      runStep("yarn start", "Running JS with `yarn start`", config.projectDir);
 
-      runStep(config, `docker build -t ${config.name} .`, "Building docker image with `docker build`");
-      runStep(config, `docker run ${config.name}`, "Building docker image with `docker build`");
+      runStep(`docker build -t ${config.name} .`, "Building docker image with `docker build`", config.projectDir);
+      runStep(`docker run ${config.name}`, "Building docker image with `docker build`", config.projectDir);
     },
   },
 ];

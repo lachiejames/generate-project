@@ -1,10 +1,8 @@
 import childProcess from "child_process";
 
-import { GPConfig } from "../models";
-
-function runStep(config: GPConfig, script: string, terminalText: string): void {
+function runStep(script: string, terminalText: string, projectDir: string): void {
   console.log(`\n🔨 ${terminalText} 🔨`);
-  childProcess.execSync(script, { stdio: "inherit", cwd: config.projectDir });
+  childProcess.execSync(script, { stdio: "inherit", cwd: projectDir });
 }
 
 export default runStep;

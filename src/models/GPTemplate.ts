@@ -4,7 +4,7 @@ interface GPTemplate {
   name: string;
   description: string;
   value: string;
-  postScaffoldSteps: (config: GPConfig) => void;
+  runPostScaffoldSteps: (config: GPConfig) => void;
 }
 
 export default GPTemplate;
