@@ -1,12 +1,6 @@
-import childProcess from "child_process";
-
+import { runStep } from "../cli";
 import { insertGitIgnore } from "../io";
-import { GPConfig, GPTemplate } from "../models";
-
-function runStep(config: GPConfig, script: string, terminalText: string): void {
-  console.log(`\n🔨 ${terminalText} 🔨`);
-  childProcess.execSync(script, { stdio: "inherit", cwd: config.projectDir });
-}
+import { GPTemplate } from "../models";
 
 const defaultGPTemplates: GPTemplate[] = [
   {
