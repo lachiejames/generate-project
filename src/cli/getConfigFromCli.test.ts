@@ -13,7 +13,7 @@ describe("getConfigFromCli", () => {
 
   it("when CLI args provided, then returns gpConfig with those values", async () => {
     const sillyCliArgs = {
-      template: "a",
+      templateName: "a",
       name: "b",
       description: "c",
       author: "d",

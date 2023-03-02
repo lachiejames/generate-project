@@ -21,7 +21,7 @@ function executeCLI(gpConfig: GPConfig) {
   // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
   shelljs.exec(
     `generate-project \
-    --template "${gpConfig.template}" \
+    --template "${gpConfig.templateName}" \
     --name "${gpConfig.name}" \
     --description "${gpConfig.description}" \
     --author "${gpConfig.author}" \
@@ -31,7 +31,7 @@ function executeCLI(gpConfig: GPConfig) {
 
 describe("ts-library", () => {
   beforeAll(() => {
-    executeCLI({ ...testConfig, template: "ts-library" });
+    executeCLI({ ...testConfig, templateName: "ts-library" });
   });
 
   afterAll(() => {

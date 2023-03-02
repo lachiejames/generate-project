@@ -5,7 +5,7 @@ import { GPConfig } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
-    name: "template",
+    name: "templateName",
     type: "select",
     message: "Select a template: ",
     choices: defaultGPTemplates.map((template) => ({
@@ -15,7 +15,7 @@ async function getSelectedTemplate(): Promise<string> {
     })),
   });
 
-  return promptData.template;
+  return promptData.templateName;
 }
 
 async function getPackageName(): Promise<string> {
@@ -60,7 +60,7 @@ async function getConfigFromCli(args: Record<string, string | undefined>): Promi
 
   const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-  gpConfig.template = args.template || (await getSelectedTemplate());
+  gpConfig.templateName = args.templateName || (await getSelectedTemplate());
   gpConfig.name = args.name || (await getPackageName());
   gpConfig.description = args.description || (await getProjectDescription());
   gpConfig.author = args.author || (await getProjectAuthor());

@@ -1,5 +1,5 @@
 interface GPConfig {
-  template: string;
+  templateName: string;
   name: string;
   description: string;
   author: string;
