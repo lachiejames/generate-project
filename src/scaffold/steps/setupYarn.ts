@@ -1,4 +1,4 @@
-import runStep from "../../cli/runStep";
+import runStep from "./runStep";
 
 function setupYarn(projectDir: string) {
   runStep("yarn install", "Installing dependencies with `yarn install`", projectDir);

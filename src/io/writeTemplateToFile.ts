@@ -3,8 +3,8 @@ import nunjucks from "nunjucks";
 
 import { GPConfig } from "../models";
 
-function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, gpConfig: GPConfig): void {
-  const outputString = template.render(gpConfig);
+function writeTemplateToFile(nunjucksTemplate: nunjucks.Template, outputFilePath: string, gpConfig: GPConfig): void {
+  const outputString = nunjucksTemplate.render(gpConfig);
   fs.outputFileSync(outputFilePath, outputString);
 }
 
