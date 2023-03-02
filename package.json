@@ -13,7 +13,7 @@
     "build": "tsc",
     "start": "ts-node .",
     "test": "jest --coverage --detectOpenHandles ./src",
-    "pree2etest": "bash ./e2e/pretest.sh",
+    "pree2etest": "bash ./e2e/preTest.sh",
     "e2etest": "jest --detectOpenHandles ./e2e",
     "format": "eslint . --fix; prettier . --write;"
   },
