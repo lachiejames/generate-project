@@ -1,7 +1,7 @@
-import { templates } from "../constants";
+import { defaultGPTemplates } from "../constants";
 
 function listTemplates(): string[] {
-  return templates.map((template) => template.value);
+  return defaultGPTemplates.map((template) => template.value);
 }
 
 export default listTemplates;

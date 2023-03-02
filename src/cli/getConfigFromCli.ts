@@ -1,6 +1,6 @@
 import prompts from "prompts";
 
-import { defaultConfig, templates } from "../constants";
+import { defaultGPConfig, defaultGPTemplates } from "../constants";
 import { GPConfig } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
@@ -8,7 +8,7 @@ async function getSelectedTemplate(): Promise<string> {
     name: "template",
     type: "select",
     message: "Select a template: ",
-    choices: templates.map((template) => ({
+    choices: defaultGPTemplates.map((template) => ({
       title: template.name,
       value: template.value,
       description: template.description,
@@ -23,7 +23,7 @@ async function getPackageName(): Promise<string> {
     name: "name",
     type: "text",
     message: "Project name: ",
-    initial: defaultConfig.name,
+    initial: defaultGPConfig.name,
     validate: (name) => name.length > 0,
   });
 
@@ -35,7 +35,7 @@ async function getProjectDescription(): Promise<string> {
     name: "description",
     type: "text",
     message: "Project description: ",
-    initial: defaultConfig.description,
+    initial: defaultGPConfig.description,
     validate: (description) => description.length > 0,
   });
 
@@ -47,7 +47,7 @@ async function getProjectAuthor(): Promise<string> {
     name: "author",
     type: "text",
     message: "Project author: ",
-    initial: defaultConfig.author,
+    initial: defaultGPConfig.author,
     validate: (author) => author.length > 0,
   });
 
@@ -58,7 +58,7 @@ async function getConfigFromCli(args: Record<string, string | undefined>): Promi
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  const config: GPConfig = JSON.parse(JSON.stringify(defaultConfig));
+  const config: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
   config.template = args.template || (await getSelectedTemplate());
   config.name = args.name || (await getPackageName());

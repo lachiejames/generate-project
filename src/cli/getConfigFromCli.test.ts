@@ -1,5 +1,5 @@
 import { cleanTestDir, setPromptMock } from "../../testUtils";
-import { defaultConfig } from "../constants";
+import { defaultGPConfig } from "../constants";
 import getConfigFromCli from "./getConfigFromCli";
 
 describe("getConfigFromCli", () => {
@@ -28,6 +28,6 @@ describe("getConfigFromCli", () => {
     const emptyCliArgs = {};
     const results = await getConfigFromCli(emptyCliArgs);
 
-    expect(results).toEqual(defaultConfig);
+    expect(results).toEqual(defaultGPConfig);
   });
 });

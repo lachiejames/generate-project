@@ -1,6 +1,6 @@
 import { GPConfig } from "../models";
 
-const defaultConfig: GPConfig = {
+const defaultGPConfig: GPConfig = {
   template: "ts-library",
   name: "my-new-package",
   description: "Hot new JS framework",
@@ -8,4 +8,4 @@ const defaultConfig: GPConfig = {
   projectDir: process.cwd(),
 };
 
-export default defaultConfig;
+export default defaultGPConfig;

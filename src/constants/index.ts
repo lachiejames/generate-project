@@ -1,2 +1,2 @@
-export { default as defaultConfig } from "./defaultConfig";
-export { default as templates } from "./templates";
+export { default as defaultGPConfig } from "./defaultGPConfig";
+export { default as defaultGPTemplates } from "./defaultGPTemplates";

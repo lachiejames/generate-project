@@ -12,7 +12,7 @@ import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { defaultConfig, GPConfig } from "../src";
+import { defaultGPConfig, GPConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
 function executeCLI(config: GPConfig) {
@@ -60,8 +60,8 @@ describe("ts-library", () => {
   it("files contain expected content", () => {
     const packageJsonContents = fs.readFileSync(`${testDir}/package.json`, "utf8");
 
-    expect(packageJsonContents).toContain(`"name": "${defaultConfig.name}"`);
-    expect(packageJsonContents).toContain(`"description": "${defaultConfig.description}"`);
-    expect(packageJsonContents).toContain(`"author": "${defaultConfig.author}"`);
+    expect(packageJsonContents).toContain(`"name": "${defaultGPConfig.name}"`);
+    expect(packageJsonContents).toContain(`"description": "${defaultGPConfig.description}"`);
+    expect(packageJsonContents).toContain(`"author": "${defaultGPConfig.author}"`);
   });
 });

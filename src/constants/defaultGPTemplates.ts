@@ -8,7 +8,7 @@ function runStep(config: GPConfig, script: string, terminalText: string): void {
   childProcess.execSync(script, { stdio: "inherit", cwd: config.projectDir });
 }
 
-const templates: GPTemplate[] = [
+const defaultGPTemplates: GPTemplate[] = [
   {
     name: "TypeScript Node library",
     description: `A TypeScript library for Node.js, with Jest unit tests, Prettier formatting, and ESLint linting.`,
@@ -46,4 +46,4 @@ const templates: GPTemplate[] = [
   },
 ];
 
-export default templates;
+export default defaultGPTemplates;
