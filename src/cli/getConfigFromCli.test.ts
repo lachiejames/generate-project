@@ -11,7 +11,7 @@ describe("getConfigFromCli", () => {
     cleanTestDir();
   });
 
-  it("when CLI args provided, then returns config with those values", async () => {
+  it("when CLI args provided, then returns gpConfig with those values", async () => {
     const sillyCliArgs = {
       template: "a",
       name: "b",
@@ -24,7 +24,7 @@ describe("getConfigFromCli", () => {
     expect(results).toEqual(sillyCliArgs);
   });
 
-  it("when no CLI args provided, then returns config with default values", async () => {
+  it("when no CLI args provided, then returns gpConfig with default values", async () => {
     const emptyCliArgs = {};
     const results = await getConfigFromCli(emptyCliArgs);
 

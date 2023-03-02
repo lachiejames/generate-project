@@ -15,17 +15,17 @@ import shelljs from "shelljs";
 import { defaultGPConfig, GPConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
-function executeCLI(config: GPConfig) {
+function executeCLI(gpConfig: GPConfig) {
   // Using shelljs.exec instead of childProcess.execSync here because I already use childProcess.execSync during
   // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
   // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
   shelljs.exec(
     `generate-project \
-    --template "${config.template}" \
-    --name "${config.name}" \
-    --description "${config.description}" \
-    --author "${config.author}" \
-    --projectDir "${config.projectDir}"`,
+    --template "${gpConfig.template}" \
+    --name "${gpConfig.name}" \
+    --description "${gpConfig.description}" \
+    --author "${gpConfig.author}" \
+    --projectDir "${gpConfig.projectDir}"`,
   );
 }
 

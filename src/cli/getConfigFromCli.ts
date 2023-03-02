@@ -58,15 +58,15 @@ async function getConfigFromCli(args: Record<string, string | undefined>): Promi
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  const config: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
+  const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-  config.template = args.template || (await getSelectedTemplate());
-  config.name = args.name || (await getPackageName());
-  config.description = args.description || (await getProjectDescription());
-  config.author = args.author || (await getProjectAuthor());
-  config.projectDir = args.projectDir || process.cwd();
+  gpConfig.template = args.template || (await getSelectedTemplate());
+  gpConfig.name = args.name || (await getPackageName());
+  gpConfig.description = args.description || (await getProjectDescription());
+  gpConfig.author = args.author || (await getProjectAuthor());
+  gpConfig.projectDir = args.projectDir || process.cwd();
 
-  return config;
+  return gpConfig;
 }
 
 export default getConfigFromCli;

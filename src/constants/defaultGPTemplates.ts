@@ -12,9 +12,9 @@ const defaultGPTemplates: GPTemplate[] = [
     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
     value: "ts-library",
-    runPostScaffoldSteps: (config) => {
-      setupGit(config.projectDir);
-      setupYarn(config.projectDir);
+    runPostScaffoldSteps: (gpConfig) => {
+      setupGit(gpConfig.projectDir);
+      setupYarn(gpConfig.projectDir);
     },
   },
   // TODO: add this library
@@ -28,9 +28,9 @@ const defaultGPTemplates: GPTemplate[] = [
   //     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
   // `,
   //   value: "ts-node-docker",
-  //   runPostScaffoldSteps: (config) => {
-  //     setupGit(config.projectDir);
-  //     setupYarn(config.projectDir);
+  //   runPostScaffoldSteps: (gpConfig) => {
+  //     setupGit(gpConfig.projectDir);
+  //     setupYarn(gpConfig.projectDir);
   //   },
   // },
 ];
