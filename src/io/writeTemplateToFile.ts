@@ -1,9 +1,9 @@
 import fs from "fs-extra";
 import nunjucks from "nunjucks";
 
-import { Config } from "../models";
+import { GPConfig } from "../models";
 
-function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, config: Config): void {
+function writeTemplateToFile(template: nunjucks.Template, outputFilePath: string, config: GPConfig): void {
   const outputString = template.render(config);
   fs.outputFileSync(outputFilePath, outputString);
 }

@@ -1,4 +1,4 @@
-interface Config {
+interface GPConfig {
   template: string;
   name: string;
   description: string;
@@ -6,4 +6,4 @@ interface Config {
   projectDir: string;
 }
 
-export default Config;
+export default GPConfig;

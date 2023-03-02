@@ -12,10 +12,10 @@ import fs from "fs-extra";
 import glob from "glob";
 import shelljs from "shelljs";
 
-import { Config, defaultConfig } from "../src";
+import { defaultConfig, GPConfig } from "../src";
 import { testConfig, testDir } from "../testUtils";
 
-function executeCLI(config: Config) {
+function executeCLI(config: GPConfig) {
   // Using shelljs.exec instead of childProcess.execSync here because I already use childProcess.execSync during
   // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
   // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)

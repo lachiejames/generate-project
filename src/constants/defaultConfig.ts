@@ -1,6 +1,6 @@
-import { Config } from "../models";
+import { GPConfig } from "../models";
 
-const defaultConfig: Config = {
+const defaultConfig: GPConfig = {
   template: "ts-library",
   name: "my-new-package",
   description: "Hot new JS framework",

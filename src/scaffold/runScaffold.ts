@@ -1,8 +1,8 @@
 import { getOutputFilePath, getTemplateFilePaths, writeTemplateToFile } from "../io";
-import { Config } from "../models";
+import { GPConfig } from "../models";
 import loadNunjucksEnvironment from "./loadNunjucksEnvironment";
 
-async function runScaffold(config: Config): Promise<void> {
+async function runScaffold(config: GPConfig): Promise<void> {
   const templateEnvironment = loadNunjucksEnvironment();
   const templateFilePaths = getTemplateFilePaths(config.template);
 

@@ -1,14 +1,14 @@
 import childProcess from "child_process";
 
 import { insertGitIgnore } from "../io";
-import { Config } from "../models";
+import { GPConfig } from "../models";
 
-function runStep(config: Config, script: string, terminalText: string): void {
+function runStep(config: GPConfig, script: string, terminalText: string): void {
   console.log(`\n🔨 ${terminalText} 🔨`);
   childProcess.execSync(script, { stdio: "inherit", cwd: config.projectDir });
 }
 
-function runPostScaffoldSteps(config: Config): void {
+function runPostScaffoldSteps(config: GPConfig): void {
   insertGitIgnore(config.projectDir);
 
   runStep(config, "git init", "Initialising git with `git init`");

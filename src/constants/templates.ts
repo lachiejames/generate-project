@@ -1,14 +1,14 @@
 import childProcess from "child_process";
 
 import { insertGitIgnore } from "../io";
-import { Config, Template } from "../models";
+import { GPConfig, GPTemplate } from "../models";
 
-function runStep(config: Config, script: string, terminalText: string): void {
+function runStep(config: GPConfig, script: string, terminalText: string): void {
   console.log(`\n🔨 ${terminalText} 🔨`);
   childProcess.execSync(script, { stdio: "inherit", cwd: config.projectDir });
 }
 
-const templates: Template[] = [
+const templates: GPTemplate[] = [
   {
     name: "TypeScript Node library",
     description: `A TypeScript library for Node.js, with Jest unit tests, Prettier formatting, and ESLint linting.`,

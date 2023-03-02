@@ -1,7 +1,7 @@
 import prompts from "prompts";
 
 import { defaultConfig, templates } from "../constants";
-import { Config } from "../models";
+import { GPConfig } from "../models";
 
 async function getSelectedTemplate(): Promise<string> {
   const promptData = await prompts({
@@ -54,11 +54,11 @@ async function getProjectAuthor(): Promise<string> {
   return promptData.author;
 }
 
-async function getConfigFromCli(args: Record<string, string | undefined>): Promise<Config> {
+async function getConfigFromCli(args: Record<string, string | undefined>): Promise<GPConfig> {
   console.clear();
   console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  const config: Config = JSON.parse(JSON.stringify(defaultConfig));
+  const config: GPConfig = JSON.parse(JSON.stringify(defaultConfig));
 
   config.template = args.template || (await getSelectedTemplate());
   config.name = args.name || (await getPackageName());

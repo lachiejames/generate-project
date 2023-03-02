@@ -1,7 +1,7 @@
-import { Config, defaultConfig } from "../src";
+import { defaultConfig, GPConfig } from "../src";
 import testDir from "./testDir";
 
-const testConfig: Config = {
+const testConfig: GPConfig = {
   ...defaultConfig,
   projectDir: testDir,
 };
