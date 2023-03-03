@@ -1,16 +1,16 @@
-import { getConfigFromCli, setupCli } from "./cli";
+import { setupCli } from "./cli";
+import { getTemplateName } from "./cli/getConfigFromCli";
 import { defaultGPTemplates } from "./constants";
 import { runScaffold } from "./scaffold";
 
 async function run(): Promise<void> {
-  const options = setupCli();
-  const gpConfig = await getConfigFromCli(options);
-  const selectedTemplate = defaultGPTemplates.find((template) => template.name === gpConfig.templateName);
-  if (!selectedTemplate) throw Error(`Unknown template selected: ${gpConfig.templateName}`);
+  const cliArgs = setupCli();
+  const templateName = cliArgs.templateName || (await getTemplateName());
+  const selectedTemplate = defaultGPTemplates[templateName];
 
+  const gpConfig = await selectedTemplate.runPreScaffoldSteps(cliArgs);
   await runScaffold(gpConfig);
-
-  selectedTemplate.runPostScaffoldSteps(gpConfig);
+  await selectedTemplate.runPostScaffoldSteps(gpConfig);
 }
 
 try {

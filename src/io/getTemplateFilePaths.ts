@@ -9,7 +9,7 @@ function getTemplateFilePaths(templateName: string): string[] {
   const templateFilePaths = glob.sync(templateFilePathsGlob, { dot: true, nodir: true });
 
   if (templateFilePaths.length === 0) {
-    const templateNames = defaultGPTemplates.map((template) => template.name);
+    const templateNames = Object.keys(defaultGPTemplates)
     throw Error(`template not found: ${templateName}.  Must be one of: ${templateNames}`);
   }
 
