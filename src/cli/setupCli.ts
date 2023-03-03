@@ -1,18 +1,21 @@
 import commander from "commander";
 
-import { GPConfig } from "../models";
+import { GPTemplateName } from "../models";
 
-function setupCli(): Partial<GPConfig> {
+function setupCli(): commander.Command {
   const program = new commander.Command("generate-project");
-  program
-    .option("-t, --templateName <string>", "Selected template")
-    .option("-n, --projectName <string>", "Project name")
-    .option("-d, --projectDescription <string>", "Project description")
-    .option("-a, --projectAuthor <string>", "Project author")
-    .option("-p, --projectDir <string>", "Project location, defaults to $(pwd)")
-    .parse(process.argv);
+  const templateNames = Object.values(GPTemplateName);
 
-  return program.opts();
+  program
+    .addArgument(new commander.Argument("template", "Selected template").choices(templateNames).argOptional())
+    .addOption(new commander.Option("-n, --projectName <string>", "Project name"))
+    .addOption(new commander.Option("-d, --projectDescription <string>", "Project description"))
+    .addOption(new commander.Option("-a, --projectAuthor <string>", "Project author"))
+    .addOption(new commander.Option("-p, --projectDir <string>", "Project location, defaults to $(pwd)"));
+
+  program.parse(process.argv);
+
+  return program;
 }
 
 export default setupCli;

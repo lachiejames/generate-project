@@ -1,11 +1,10 @@
 import GPConfig from "./gpConfig";
-import GPTemplateName from "./gpTemplateName";
 
 interface GPTemplate {
-  name: GPTemplateName;
   displayName: string;
   description: string;
-  runPostScaffoldSteps: (gpConfig: GPConfig) => void;
+  runPreScaffoldSteps: (cliArgs: Partial<GPConfig>) => Promise<GPConfig>;
+  runPostScaffoldSteps: (gpConfig: GPConfig) => Promise<void>;
 }
 
 export default GPTemplate;

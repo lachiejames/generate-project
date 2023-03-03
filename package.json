@@ -11,7 +11,7 @@
     "lint:ci": "eslint .",
     "prebuild": "rm -rf dist",
     "build": "tsc",
-    "start": "ts-node .",
+    "start": "ts-node ./src/entrypoint.ts",
     "test": "jest --coverage --detectOpenHandles ./src",
     "pree2etest": "bash ./e2e/preTest.sh",
     "e2etest": "jest --detectOpenHandles ./e2e",

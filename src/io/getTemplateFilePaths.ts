@@ -1,7 +1,7 @@
 import glob from "glob";
 import path from "path";
 
-import { defaultGPTemplates } from "../constants";
+import { GPTemplateName } from "../models";
 import rootDir from "./rootDir";
 
 function getTemplateFilePaths(templateName: string): string[] {
@@ -9,7 +9,7 @@ function getTemplateFilePaths(templateName: string): string[] {
   const templateFilePaths = glob.sync(templateFilePathsGlob, { dot: true, nodir: true });
 
   if (templateFilePaths.length === 0) {
-    const templateNames = defaultGPTemplates.map((template) => template.name);
+    const templateNames = Object.values(GPTemplateName);
     throw Error(`template not found: ${templateName}.  Must be one of: ${templateNames}`);
   }
 
