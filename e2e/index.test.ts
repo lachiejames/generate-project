@@ -19,8 +19,7 @@ function executeCLI(gpConfig: GPConfig) {
   // runPostScaffoldSteps(), and nested childProcess.execSync is not allowed.
   // Apparently a childProcess.execSync nested inside a shelljs.exec is allowed though (not sure why, but whatever it's just a test)
   shelljs.exec(
-    `generate-project \
-    --templateName "${gpConfig.templateName}" \
+    `generate-project "${gpConfig.templateName}" \
     --projectName "${gpConfig.projectName}" \
     --projectDescription "${gpConfig.projectDescription}" \
     --projectAuthor "${gpConfig.projectAuthor}" \

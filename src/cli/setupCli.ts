@@ -1,8 +1,8 @@
 import commander from "commander";
 
-import { GPConfig, GPTemplateName } from "../models";
+import {  GPTemplateName } from "../models";
 
-function setupCli(): Partial<GPConfig> {
+function setupCli(): commander.Command {
   const program = new commander.Command("generate-project");
   const templateNames = Object.values(GPTemplateName);
 
@@ -15,7 +15,7 @@ function setupCli(): Partial<GPConfig> {
 
   program.parse(process.argv);
 
-  return program.opts();
+  return program
 }
 
 export default setupCli;
