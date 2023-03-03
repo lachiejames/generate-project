@@ -3,9 +3,8 @@ import { GPConfig, GPTemplate, GPTemplateName } from "../models";
 import { setupGit, setupYarn } from "../scaffold";
 import defaultGPConfig from "./defaultGPConfig";
 
-const defaultGPTemplates: GPTemplate[] = [
-  {
-    name: GPTemplateName.TS_LIBRARY,
+const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
+  [GPTemplateName.TS_LIBRARY]: {
     displayName: "TypeScript Node library",
     description: `
     A Node library written in TypeScript.
@@ -33,37 +32,62 @@ const defaultGPTemplates: GPTemplate[] = [
       setupYarn(gpConfig.projectDir);
     },
   },
-  // {
-  //   name: GPTemplateName.TS_DOCKER,
-  //   displayName: "TypeScript Node library (with Docker)",
-  //   description: `
-  //     A Node library written in TypeScript.
-  //     This template is a good starting point for building a library that can be published to NPM.
-  //     It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
+  [GPTemplateName.TS_DOCKER]: {
+    displayName: "TypeScript Node library (with Docker)",
+    description: `
+      A Node library written in TypeScript.
+      This template is a good starting point for building a library that can be published to NPM.
+      It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
 
-  //     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
-  // `,
-  //   runPostScaffoldSteps: (gpConfig) => {
-  //     setupGit(gpConfig.projectDir);
-  //     setupYarn(gpConfig.projectDir);
-  //     setupDocker(gpConfig.projectName, gpConfig.projectDir);
-  //   },
-  // },
-  // {
-  //   name: GPTemplateName.TS_EXPRESS_REACT_MONOREPO,
-  //   displayName: "TypeScript Express backend with React frontend (monorepo)",
-  //   description: `
-  //     A Node library written in TypeScript.
-  //     This template is a good starting point for building a library that can be published to NPM.
-  //     It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
+      ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
+  `,
+    runPreScaffoldSteps: async (cliArgs) => {
+      console.clear();
+      console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
 
-  //     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
-  // `,
-  //   runPostScaffoldSteps: (gpConfig) => {
-  //     setupGit(gpConfig.projectDir);
-  //     setupYarn(gpConfig.projectDir);
-  //   },
-  // },
-];
+      const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
+
+      gpConfig.templateName = cliArgs.templateName || (await getTemplateName());
+      gpConfig.projectName = cliArgs.projectName || (await getPackageName());
+      gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
+      gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());
+      gpConfig.projectDir = cliArgs.projectDir || process.cwd();
+
+      return gpConfig;
+    },
+    runPostScaffoldSteps: async (gpConfig) => {
+      setupGit(gpConfig.projectDir);
+      setupYarn(gpConfig.projectDir);
+    },
+  },
+  [GPTemplateName.TS_EXPRESS_REACT_MONOREPO]: {
+    displayName: "TypeScript Express backend with React frontend (monorepo)",
+    description: `
+      A Node library written in TypeScript.
+      This template is a good starting point for building a library that can be published to NPM.
+      It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
+
+      ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
+  `,
+    runPreScaffoldSteps: async (cliArgs) => {
+      console.clear();
+      console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
+
+      const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
+
+      gpConfig.templateName = cliArgs.templateName || (await getTemplateName());
+      gpConfig.projectName = cliArgs.projectName || (await getPackageName());
+      gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
+      gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());
+      gpConfig.projectDir = cliArgs.projectDir || process.cwd();
+
+      return gpConfig;
+    },
+    runPostScaffoldSteps: async (gpConfig) => {
+      setupGit(gpConfig.projectDir);
+      setupYarn(gpConfig.projectDir);
+    },
+  },
+};
 
 export default defaultGPTemplates;

@@ -6,8 +6,7 @@ import { runScaffold } from "./scaffold";
 async function run(): Promise<void> {
   const cliArgs = setupCli();
   const templateName = cliArgs.templateName || (await getTemplateName());
-  const selectedTemplate = defaultGPTemplates.find((template) => template.name === templateName);
-  if (!selectedTemplate) throw Error(`Unknown template selected: ${templateName}`);
+  const selectedTemplate = defaultGPTemplates[templateName];
 
   const gpConfig = await selectedTemplate.runPreScaffoldSteps(cliArgs);
   await runScaffold(gpConfig);

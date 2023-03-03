@@ -8,8 +8,8 @@ export async function getTemplateName(): Promise<GPTemplateName> {
     name: "templateName",
     type: "select",
     message: "Select a template: ",
-    choices: defaultGPTemplates.map((template) => ({
-      value: template.name,
+    choices: Object.entries(defaultGPTemplates).map(([templateName, template]) => ({
+      value: templateName,
       title: template.displayName,
       description: template.description,
     })),
