@@ -18,6 +18,4 @@ function setupCli(): Partial<GPConfig> {
   return program.opts();
 }
 
-console.log(setupCli());
-
 export default setupCli;

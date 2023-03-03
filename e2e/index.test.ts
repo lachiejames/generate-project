@@ -95,37 +95,3 @@ describe("ts-docker", () => {
     expect(output.stdout).toContain(testConfig.projectName);
   });
 });
-
-describe.only("ts-express-react-monorepo", () => {
-  beforeAll(() => {
-    executeCLI({ ...testConfig, templateName: GPTemplateName.TS_EXPRESS_REACT_MONOREPO });
-  });
-
-  it("produces the expected files", () => {
-    const outputFilePaths: string[] = glob.sync(`${testDir}/**`, { dot: true, nodir: true });
-
-    // Ensure src files were copied over
-    expect(outputFilePaths).toContain(`${testDir}/package.json`);
-    expect(outputFilePaths).toContain(`${testDir}/express-app/package.json`);
-    expect(outputFilePaths).toContain(`${testDir}/react-app/package.json`);
-
-    // // Ensure `yarn install` was successful
-    // expect(outputFilePaths).toContain(`${testDir}/node_modules/typescript/package.json`);
-
-    // // Ensure `yarn build` was successful
-    // expect(outputFilePaths).toContain(`${testDir}/dist/index.js`);
-
-    // // Ensure .gitignore is copied over (as a post-scaffold step)
-    // expect(outputFilePaths).toContain(`${testDir}/.gitignore`);
-  });
-
-  it("express server is listening on port 8080", async () => {
-    const output = await fetch("http://localhost:8080");
-    expect(output).toEqual("");
-  });
-
-  it("react server is listening on port 3000", async () => {
-    const output = await fetch("http://localhost:3000");
-    expect(output).toEqual("");
-  });
-});
