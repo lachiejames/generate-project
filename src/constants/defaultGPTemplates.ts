@@ -1,6 +1,5 @@
-import { getPackageName, getProjectAuthor, getProjectDescription } from "../cli/getConfigFromCli";
 import { GPConfig, GPTemplate, GPTemplateName } from "../models";
-import { setupGit, setupYarn } from "../scaffold";
+import { promptProjectAuthor, promptProjectDescription, promptProjectName, setupGit, setupYarn } from "../scaffold";
 import defaultGPConfig from "./defaultGPConfig";
 
 const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
@@ -16,9 +15,9 @@ const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
     runPreScaffoldSteps: async (cliArgs) => {
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-      gpConfig.projectName = cliArgs.projectName || (await getPackageName());
-      gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
-      gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());
+      gpConfig.projectName = cliArgs.projectName || (await promptProjectName());
+      gpConfig.projectDescription = cliArgs.projectDescription || (await promptProjectDescription());
+      gpConfig.projectAuthor = cliArgs.projectAuthor || (await promptProjectAuthor());
       gpConfig.projectDir = cliArgs.projectDir || process.cwd();
 
       return gpConfig;
@@ -40,9 +39,9 @@ const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
     runPreScaffoldSteps: async (cliArgs) => {
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-      gpConfig.projectName = cliArgs.projectName || (await getPackageName());
-      gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
-      gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());
+      gpConfig.projectName = cliArgs.projectName || (await promptProjectName());
+      gpConfig.projectDescription = cliArgs.projectDescription || (await promptProjectDescription());
+      gpConfig.projectAuthor = cliArgs.projectAuthor || (await promptProjectAuthor());
       gpConfig.projectDir = cliArgs.projectDir || process.cwd();
 
       return gpConfig;
