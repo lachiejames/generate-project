@@ -6,8 +6,8 @@ import { promptTemplateName } from "./scaffold/preSteps";
 
 async function run(): Promise<void> {
   const cli = setupCli();
-  const templateName = (cli.args[0] as GPTemplateName) || (await promptTemplateName());
-  const selectedTemplate = defaultGPTemplates[templateName];
+  const templateName = cli.args[0] || (await promptTemplateName());
+  const selectedTemplate = defaultGPTemplates[templateName as GPTemplateName];
 
   const gpConfig = await selectedTemplate.runPreScaffoldSteps(cli.opts());
   await runScaffold(gpConfig);

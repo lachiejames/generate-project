@@ -5,12 +5,11 @@ import defaultGPConfig from "./defaultGPConfig";
 const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
   [GPTemplateName.TS_LIBRARY]: {
     displayName: "TypeScript Node library",
-    description: `
-    A Node library written in TypeScript.
-    This template is a good starting point for building a library that can be published to NPM.
-    It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.  
+    description: `A Node library written in TypeScript.
+This template is a good starting point for building a library that can be published to NPM.
+It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.  
 
-    ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
+✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
     runPreScaffoldSteps: async (cliArgs) => {
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
@@ -29,13 +28,12 @@ const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
   },
   [GPTemplateName.TS_DOCKER]: {
     displayName: "TypeScript Node library (with Docker)",
-    description: `
-      A Node library written in TypeScript.
-      This template is a good starting point for building a library that can be published to NPM.
-      It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
+    description: `A Node library written in TypeScript.
+This template is a good starting point for building a library that can be published to NPM.
+It includes a build script that compiles your TypeScript to JavaScript, and a test script that runs your tests with Jest.
 
-      ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
-  `,
+✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
+`,
     runPreScaffoldSteps: async (cliArgs) => {
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
