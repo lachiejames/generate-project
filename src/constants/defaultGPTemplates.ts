@@ -14,12 +14,8 @@ const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
     ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ❌ Docker ✅ GitHub Actions ✅ Semantic Release
 `,
     runPreScaffoldSteps: async (cliArgs) => {
-      console.clear();
-      console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
-
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-      gpConfig.templateName = cliArgs.templateName || (await getTemplateName());
       gpConfig.projectName = cliArgs.projectName || (await getPackageName());
       gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
       gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());
@@ -42,12 +38,8 @@ const defaultGPTemplates: Record<GPTemplateName, GPTemplate> = {
       ✅ ESLint ✅ Prettier ✅ Jest ✅ TypeScript ✅ Docker ✅ GitHub Actions ✅ Semantic Release
   `,
     runPreScaffoldSteps: async (cliArgs) => {
-      console.clear();
-      console.log("👷‍♂️ Oi Oi!  Building a new project are we?");
-
       const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-      gpConfig.templateName = cliArgs.templateName || (await getTemplateName());
       gpConfig.projectName = cliArgs.projectName || (await getPackageName());
       gpConfig.projectDescription = cliArgs.projectDescription || (await getProjectDescription());
       gpConfig.projectAuthor = cliArgs.projectAuthor || (await getProjectAuthor());

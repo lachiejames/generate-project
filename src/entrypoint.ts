@@ -5,11 +5,11 @@ import {  GPTemplateName } from "./models";
 import { runScaffold } from "./scaffold";
 
 async function run(): Promise<void> {
-  const command = setupCli();
-  const templateName = (command.args[0] as GPTemplateName) || (await getTemplateName());
+  const cli = setupCli();
+  const templateName = (cli.args[0] as GPTemplateName) || (await getTemplateName());
   const selectedTemplate = defaultGPTemplates[templateName];
 
-  const gpConfig = await selectedTemplate.runPreScaffoldSteps(command.opts());
+  const gpConfig = await selectedTemplate.runPreScaffoldSteps(cli.opts());
   await runScaffold(gpConfig);
   await selectedTemplate.runPostScaffoldSteps(gpConfig);
 }

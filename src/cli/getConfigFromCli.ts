@@ -60,7 +60,6 @@ async function getConfigFromCli(args: Partial<GPConfig>): Promise<GPConfig> {
 
   const gpConfig: GPConfig = JSON.parse(JSON.stringify(defaultGPConfig));
 
-  gpConfig.templateName = args.templateName || (await getTemplateName());
   gpConfig.projectName = args.projectName || (await getPackageName());
   gpConfig.projectDescription = args.projectDescription || (await getProjectDescription());
   gpConfig.projectAuthor = args.projectAuthor || (await getProjectAuthor());
