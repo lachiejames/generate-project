@@ -3,7 +3,7 @@ import prompts from "prompts";
 import { defaultGPConfig, defaultGPTemplates } from "../constants";
 import { GPConfig, GPTemplateName } from "../models";
 
-async function getTemplateName(): Promise<GPTemplateName> {
+export async function getTemplateName(): Promise<GPTemplateName> {
   const promptData = await prompts({
     name: "templateName",
     type: "select",
@@ -18,7 +18,7 @@ async function getTemplateName(): Promise<GPTemplateName> {
   return promptData.templateName;
 }
 
-async function getPackageName(): Promise<string> {
+export async function getPackageName(): Promise<string> {
   const promptData = await prompts({
     name: "projectName",
     type: "text",
@@ -30,7 +30,7 @@ async function getPackageName(): Promise<string> {
   return promptData.projectName;
 }
 
-async function getProjectDescription(): Promise<string> {
+export async function getProjectDescription(): Promise<string> {
   const promptData = await prompts({
     name: "projectDescription",
     type: "text",
@@ -42,7 +42,7 @@ async function getProjectDescription(): Promise<string> {
   return promptData.projectDescription;
 }
 
-async function getProjectAuthor(): Promise<string> {
+export async function getProjectAuthor(): Promise<string> {
   const promptData = await prompts({
     name: "projectAuthor",
     type: "text",

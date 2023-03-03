@@ -8,9 +8,9 @@ async function run(): Promise<void> {
   const selectedTemplate = defaultGPTemplates.find((template) => template.name === gpConfig.templateName);
   if (!selectedTemplate) throw Error(`Unknown template selected: ${gpConfig.templateName}`);
 
+  await selectedTemplate.runPreScaffoldSteps(gpConfig);
   await runScaffold(gpConfig);
-
-  selectedTemplate.runPostScaffoldSteps(gpConfig);
+  await selectedTemplate.runPostScaffoldSteps(gpConfig);
 }
 
 try {
