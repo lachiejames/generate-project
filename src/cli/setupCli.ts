@@ -1,6 +1,6 @@
 import commander from "commander";
 
-import {  GPTemplateName } from "../models";
+import { GPTemplateName } from "../models";
 
 function setupCli(): commander.Command {
   const program = new commander.Command("generate-project");
@@ -15,7 +15,7 @@ function setupCli(): commander.Command {
 
   program.parse(process.argv);
 
-  return program
+  return program;
 }
 
 export default setupCli;

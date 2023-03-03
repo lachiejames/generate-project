@@ -1,22 +1,7 @@
 import prompts from "prompts";
 
-import { defaultGPConfig, defaultGPTemplates } from "../constants";
-import { GPConfig, GPTemplateName } from "../models";
-
-export async function getTemplateName(): Promise<GPTemplateName> {
-  const promptData = await prompts({
-    name: "templateName",
-    type: "select",
-    message: "Select a template: ",
-    choices: Object.entries(defaultGPTemplates).map(([templateName, template]) => ({
-      value: templateName,
-      title: template.displayName,
-      description: template.description,
-    })),
-  });
-
-  return promptData.templateName;
-}
+import { defaultGPConfig } from "../constants";
+import { GPConfig } from "../models";
 
 export async function getPackageName(): Promise<string> {
   const promptData = await prompts({

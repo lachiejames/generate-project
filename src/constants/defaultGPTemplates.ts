@@ -1,4 +1,4 @@
-import { getPackageName, getProjectAuthor, getProjectDescription, getTemplateName } from "../cli/getConfigFromCli";
+import { getPackageName, getProjectAuthor, getProjectDescription } from "../cli/getConfigFromCli";
 import { GPConfig, GPTemplate, GPTemplateName } from "../models";
 import { setupGit, setupYarn } from "../scaffold";
 import defaultGPConfig from "./defaultGPConfig";

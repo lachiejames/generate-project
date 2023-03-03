@@ -1,12 +1,12 @@
 import { setupCli } from "./cli";
-import { getTemplateName } from "./cli/getConfigFromCli";
 import { defaultGPTemplates } from "./constants";
-import {  GPTemplateName } from "./models";
+import { GPTemplateName } from "./models";
 import { runScaffold } from "./scaffold";
+import { promptTemplateName } from "./scaffold/preSteps";
 
 async function run(): Promise<void> {
   const cli = setupCli();
-  const templateName = (cli.args[0] as GPTemplateName) || (await getTemplateName());
+  const templateName = (cli.args[0] as GPTemplateName) || (await promptTemplateName());
   const selectedTemplate = defaultGPTemplates[templateName];
 
   const gpConfig = await selectedTemplate.runPreScaffoldSteps(cli.opts());
